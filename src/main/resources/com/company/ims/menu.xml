@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/ui/menu">
+<!--    <menu id="application" caption="msg://com.company.ims/menu.application" insertBefore="administration"/>-->
+<!--        <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption"/>-->
+<!--        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>-->
+<!--        <item screen="Student.browse"-->
+<!--              caption="msg://com.company.ims.screen.student/studentBrowse.menu"/>-->
+<!--        <item screen="StudentHomeScreen"-->
+<!--              caption="msg://com.company.ims.screen.studenthome/studentHomeScreen.caption"/>-->
+<!--        <item screen="Lecturer.browse"-->
+<!--              caption="msg://com.company.ims.screen.lecturer/lecturerBrowse.menu"/>-->
+<!--        <item screen="LecturerHomeScreen"-->
+<!--              caption="msg://com.company.ims.screen.lecturerhome/lecturerHomeScreen.caption"/>-->
+<!--    </menu>-->
+    <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption" icon="font-icon:USER" insertBefore="administration"/>
+
+    <item screen="Student.browse"
+          caption="msg://com.company.ims.screen.student/studentBrowse.menu" icon="font-icon:USERS" insertBefore="administration"/>
+    <item screen="StudentHomeScreen" id="StudentHomeScreen"
+          caption="msg://com.company.ims.screen.studenthome/studentHomeScreen.caption" icon="font-icon:NEWSPAPER_O" insertBefore="administration"/>
+    <item screen="Lecturer.browse"
+          caption="msg://com.company.ims.screen.lecturer/lecturerBrowse.menu" icon="font-icon:UNIVERSITY" insertBefore="administration"/>
+    <item screen="LecturerHomeScreen" id="LecturerHomeScreen"
+          caption="msg://com.company.ims.screen.lecturerhome/lecturerHomeScreen.caption" icon="font-icon:NEWSPAPER_O"/>
+    <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption" />
+</menu-config>

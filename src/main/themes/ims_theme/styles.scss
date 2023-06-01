@@ -1,0 +1,8 @@
+@import "ims_theme-defaults";
+@import "addons";
+@import "ims_theme";
+
+.ims_theme {
+  @include addons;
+  @include ims_theme;
+}
