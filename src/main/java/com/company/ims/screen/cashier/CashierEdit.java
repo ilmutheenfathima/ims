@@ -1,9 +1,9 @@
-package com.company.ims.screen.student;
+package com.company.ims.screen.cashier;
 
 import com.company.ims.entity.User;
+import com.company.ims.security.CashierRole;
 import com.company.ims.security.DatabaseUserRepository;
 import com.company.ims.security.LecturerRole;
-import com.company.ims.security.StudentRole;
 import io.jmix.core.EntityStates;
 import io.jmix.core.security.event.SingleUserPasswordChangeEvent;
 import io.jmix.ui.Notifications;
@@ -11,16 +11,16 @@ import io.jmix.ui.component.PasswordField;
 import io.jmix.ui.component.TextField;
 import io.jmix.ui.model.DataContext;
 import io.jmix.ui.screen.*;
-import com.company.ims.entity.Student;
+import com.company.ims.entity.Cashier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Objects;
 
-@UiController("Student.edit")
-@UiDescriptor("student-edit.xml")
-@EditedEntityContainer("studentDc")
-public class StudentEdit extends StandardEditor<Student> {
+@UiController("Cashier.edit")
+@UiDescriptor("cashier-edit.xml")
+@EditedEntityContainer("cashierDc")
+public class CashierEdit extends StandardEditor<Cashier> {
     @Autowired
     DatabaseUserRepository userRepository;
     @Autowired
@@ -77,7 +77,7 @@ public class StudentEdit extends StandardEditor<Student> {
     @Subscribe(target = Target.DATA_CONTEXT)
     public void onPostCommit(DataContext.PostCommitEvent event) {
         if (isNewEntity) {
-            userRepository.addResourceRoleToUser(getEditedEntity(), StudentRole.CODE); // set student role
+            userRepository.addResourceRoleToUser(getEditedEntity(), CashierRole.CODE); // set cashier role
             getApplicationContext().publishEvent(new SingleUserPasswordChangeEvent(getEditedEntity().getUsername(), passwordField.getValue()));
         }
     }

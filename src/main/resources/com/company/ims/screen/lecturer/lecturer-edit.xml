@@ -22,17 +22,26 @@
                 caption="msg:///actions.Close"
                 icon="EDITOR_CANCEL"/>
     </actions>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
     <layout spacing="true" expand="editActions">
         <form id="form" dataContainer="lecturerDc">
             <column width="350px">
                 <textField id="usernameField" property="username"/>
+                <passwordField id="passwordField"
+                               caption="msg://com.company.ims.entity/User.password"
+                               required="true"
+                               visible="false"/>
+                <passwordField id="confirmPasswordField"
+                               caption="msg://confirmPassword"
+                               required="true"
+                               visible="false"/>
                 <textField id="firstNameField" property="firstName"/>
                 <textField id="lastNameField" property="lastName"/>
                 <textField id="emailField" property="email"/>
                 <checkBox id="activeField" property="active"/>
-                <textField id="timeZoneIdField" property="timeZoneId"/>
                 <textField id="lecturerIdField" property="lecturerId"/>
                 <textField id="addressField" property="address"/>
             </column>

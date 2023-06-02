@@ -9,10 +9,18 @@ import javax.persistence.Entity;
 @Entity
 public class Student extends User {
     @Column(name = "STUDENT_ID")
-    private Integer studentId;
+    private String studentId;
 
     @Column(name = "ADDRESS")
     private String address;
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
 
     public String getAddress() {
         return address;
@@ -22,11 +30,4 @@ public class Student extends User {
         this.address = address;
     }
 
-    public Integer getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
-    }
 }

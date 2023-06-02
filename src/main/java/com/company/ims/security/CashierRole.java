@@ -8,14 +8,11 @@ import io.jmix.securityui.role.annotation.ScreenPolicy;
 import javax.annotation.Nonnull;
 
 @Nonnull
-@ResourceRole(name = "LecturerRole", code = LecturerRole.CODE)
-public interface LecturerRole extends UiMinimalRole {
-    String CODE = "lecturer-role";
+@ResourceRole(name = "Cashier", code = CashierRole.CODE)
+public interface CashierRole extends UiMinimalRole {
+    String CODE = "cashier-role";
 
-    @MenuPolicy(menuIds = "LecturerHomeScreen")
-    @ScreenPolicy(screenIds = "LecturerHomeScreen")
+    @MenuPolicy(menuIds = "CashierHomeScreen")
+    @ScreenPolicy(screenIds = "CashierHomeScreen")
     void screens();
 }
-
-
-

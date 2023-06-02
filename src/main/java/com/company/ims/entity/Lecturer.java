@@ -10,17 +10,17 @@ import javax.persistence.Entity;
 public class Lecturer extends User {
 
     @Column(name = "LECTURER_ID")
-    private Integer lecturerId;
+    private String lecturerId;
 
     @Column(name = "ADDRESS")
     private String address;
 
-    public Integer getLecturerId() {
-        return lecturerId;
+    public void setLecturerId(String lecturerId) {
+        this.lecturerId = lecturerId;
     }
 
-    public void setLecturerId(Integer lecturerId) {
-        this.lecturerId = lecturerId;
+    public String getLecturerId() {
+        return lecturerId;
     }
 
     public String getAddress() {
