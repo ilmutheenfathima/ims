@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://levelBrowse.caption"
+        focusComponent="levelsTable">
+    <data readOnly="true">
+        <collection id="levelsDc"
+                    class="com.company.ims.entity.Level">
+            <fetchPlan extends="_base">
+                <property name="course" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="levelsDl">
+                <query>
+                    <![CDATA[select e from Level_ e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="levelsTable" spacing="true">
+<!--        <filter id="filter"-->
+<!--                dataLoader="levelsDl">-->
+<!--            <properties include=".*"/>-->
+<!--        </filter>-->
+        <groupTable id="levelsTable"
+                    width="100%"
+                    dataContainer="levelsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <group>
+                    <column id="course"/>
+                </group>
+                <column id="name"/>
+                <column id="action" caption="msg://action.caption"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="levelsTable.create"/>
+                <button id="editBtn" action="levelsTable.edit"/>
+                <button id="removeBtn" action="levelsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://intakeModuleBrowse.caption"
+        focusComponent="intakeModulesTable">
+    <data readOnly="true">
+        <collection id="intakeModulesDc"
+                    class="com.company.ims.entity.IntakeModule">
+            <fetchPlan extends="_base">
+                <property fetchPlan="_base" name="intake"/>
+                <property fetchPlan="_base" name="module"/>
+            </fetchPlan>
+            <loader id="intakeModulesDl">
+                <query>
+                    <![CDATA[select e from IntakeModule e
+                    where e.intake = :intake  ]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="intakeModulesTable" spacing="true">
+<!--        <filter id="filter"-->
+<!--                dataLoader="intakeModulesDl">-->
+<!--            <properties include=".*"/>-->
+<!--        </filter>-->
+        <groupTable id="intakeModulesTable"
+                    width="100%"
+                    dataContainer="intakeModulesDc">
+            <actions>
+                <action id="create" type="create" caption="msg://create.caption"/>
+<!--                <action id="edit" type="edit"/>-->
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="module"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="intakeModulesTable.create"/>
+<!--                <button id="editBtn" action="intakeModulesTable.edit"/>-->
+                <button id="removeBtn" action="intakeModulesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
-    <!--    <menu id="application" caption="msg://com.company.ims/menu.application" insertBefore="administration"/>-->
-    <!--        <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption"/>-->
-    <!--        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>-->
-    <!--        <item screen="Student.browse"-->
-    <!--              caption="msg://com.company.ims.screen.student/studentBrowse.menu"/>-->
-    <!--        <item screen="StudentHomeScreen"-->
-    <!--              caption="msg://com.company.ims.screen.studenthome/studentHomeScreen.caption"/>-->
-    <!--        <item screen="Lecturer.browse"-->
-    <!--              caption="msg://com.company.ims.screen.lecturer/lecturerBrowse.menu"/>-->
-    <!--        <item screen="LecturerHomeScreen"-->
-    <!--              caption="msg://com.company.ims.screen.lecturerhome/lecturerHomeScreen.caption"/>-->
-    <!--    </menu>-->
-    <menu id="usersMenu" caption="msg://com.company.ims/menu.users" icon="font-icon:USERS" insertBefore="administration">
+    <menu id="usersMenu" caption="msg://com.company.ims/menu.users" icon="font-icon:USERS"
+          insertBefore="administration">
         <item screen="Student.browse"
               caption="msg://com.company.ims.screen.student/studentBrowse.menu" icon="font-icon:PENCIL"/>
         <item screen="Lecturer.browse"
               caption="msg://com.company.ims.screen.lecturer/lecturerBrowse.menu" icon="font-icon:MORTAR_BOARD"/>
         <item screen="Cashier.browse"
               caption="msg://com.company.ims.screen.cashier/cashierBrowse.menu" icon="font-icon:MONEY"/>
-        <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption" icon="font-icon:USER"/>
+        <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption"
+              icon="font-icon:USER"/>
+    </menu>
+
+    <menu id="courseMenu" caption="msg://com.company.ims/menu.courses" icon="font-icon:BOOK"
+          insertBefore="administration">
+        <item screen="Course.browse"
+              caption="msg://com.company.ims.screen.course/courseBrowse.menu" icon="font-icon:BOOK"/>
+        <item screen="Level_.browse" caption="msg://com.company.ims.screen.level/levelBrowse.menu"
+              icon="font-icon:LIST"/>
+    </menu>
+
+    <menu id="intakeMenu" caption="msg://com.company.ims/menu.intakes" icon="font-icon:OBJECT_GROUP"
+          insertBefore="administration">
+        <item screen="Intake.browse" caption="msg://com.company.ims.screen.intake/intakeBrowse.menu"
+              icon="font-icon:OBJECT_GROUP"/>
+        <item screen="Batch.browse" caption="msg://com.company.ims.screen.batch/batchBrowse.menu"
+              icon="font-icon:ALIGN_RIGHT"/>
     </menu>
 
 

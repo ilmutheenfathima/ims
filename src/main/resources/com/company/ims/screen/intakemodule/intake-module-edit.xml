@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://intakeModuleEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="intakeModuleDc"
+                  class="com.company.ims.entity.IntakeModule">
+            <fetchPlan extends="_base">
+                <property name="intake" fetchPlan="_base"/>
+                <property name="module" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+        <collection id="modulesDc" class="com.company.ims.entity.Module">
+            <fetchPlan extends="_base"/>
+            <loader id="modulesDl">
+                <query>
+                    <![CDATA[select e from Module_ e
+                    where e.level = :level
+                    and e.id not in :alreadyAddedModules  ]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="intakeModuleDc">
+            <column width="350px">
+                <entityComboBox id="moduleField" property="module" optionsContainer="modulesDc" required="true" nullOptionVisible="false"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

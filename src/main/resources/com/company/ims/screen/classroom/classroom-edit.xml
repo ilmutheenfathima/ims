@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://classroomEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="classroomDc"
+                  class="com.company.ims.entity.Classroom">
+            <fetchPlan extends="_base">
+                <property name="batch" fetchPlan="_base">
+                    <property name="intake" fetchPlan="_base">
+                        <property name="level" fetchPlan="_base">
+                            <property name="course" fetchPlan="_base"/>
+                        </property>
+                    </property>
+                </property>
+                <property name="lecturer" fetchPlan="_base"/>
+                <property name="intakeModule" fetchPlan="_base">
+                    <property name="module" fetchPlan="_base"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+        </instance>
+        <collection id="intakeModulesDc" class="com.company.ims.entity.IntakeModule">
+            <fetchPlan extends="_base"/>
+            <loader id="intakeModulesDl">
+                <query>
+                    <![CDATA[select e from IntakeModule e
+                    where e.intake = :intake  ]]>
+                </query>
+            </loader>
+        </collection>
+
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="classroomDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <dateField id="startDateField" property="startDate"/>
+                <dateField id="endDateField" property="endDate"/>
+                <comboBox id="dayField" property="day"/>
+                <timeField id="startTimeField" property="startTime"/>
+                <timeField id="endTimeField" property="endTime"/>
+                <entityPicker id="lecturerField" property="lecturer">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <entityComboBox id="intakeModuleField" property="intakeModule" optionsContainer="intakeModulesDc" required="true" nullOptionVisible="false"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

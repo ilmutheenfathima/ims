@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://intakeBrowse.caption"
+        focusComponent="intakesTable">
+    <data readOnly="true">
+        <collection id="intakesDc"
+                    class="com.company.ims.entity.Intake">
+            <fetchPlan extends="_base">
+                <property name="level" fetchPlan="_base">
+                    <property name="course" fetchPlan="_base"/>
+                </property>
+            </fetchPlan>
+            <loader id="intakesDl">
+                <query>
+                    <![CDATA[select e from Intake e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="intakesTable" spacing="true">
+        <filter id="filter"
+                dataLoader="intakesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="intakesTable"
+                    width="100%"
+                    dataContainer="intakesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <group>
+                    <column id="level.course"/>
+                    <column id="level"/>
+                </group>
+                <column id="name"/>
+                <column id="startDate"/>
+                <column id="action" caption="msg://action.caption"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="intakesTable.create"/>
+                <button id="editBtn" action="intakesTable.edit"/>
+                <button id="removeBtn" action="intakesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

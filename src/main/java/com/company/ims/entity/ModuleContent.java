@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "MODULE_CONTENT", indexes = {
-        @Index(name = "IDX_MODULECONTENT_INTAKEMODULE", columnList = "INTAKE_MODULE_ID")
+        @Index(name = "IDX_MODULECONTENT_INTAKEMODULE", columnList = "")
 })
 @Entity
 public class ModuleContent {
@@ -29,9 +29,8 @@ public class ModuleContent {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @JoinColumn(name = "INTAKE_MODULE_ID", nullable = false)
     @NotNull
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "moduleContent", optional = false)
     private IntakeModule intakeModule;
 
     @Column(name = "MODULE_FEE")

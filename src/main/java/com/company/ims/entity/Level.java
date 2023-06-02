@@ -21,7 +21,6 @@ public class Level {
     @Id
     private UUID id;
 
-    @InstanceName
     @Column(name = "NAME")
     private String name;
 
@@ -76,5 +75,10 @@ public class Level {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    @InstanceName
+    public String getLevelLongName() {
+        return course.getName() + " " + name;
     }
 }

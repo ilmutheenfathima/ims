@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="ims">
+        <createTable tableName="BATCH">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_BATCH"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="INTAKE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="ims">
+        <createTable tableName="CLASSROOM">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CLASSROOM"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="BATCH_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="START_DATE" type="DATE"/>
+            <column name="END_DATE" type="DATE"/>
+            <column name="DAY_" type="VARCHAR(255)"/>
+            <column name="START_TIME" type="TIME"/>
+            <column name="END_TIME" type="TIME"/>
+            <column name="LECTURER_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INTAKE_MODULE_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="ims">
+        <createTable tableName="CONTENT_ITEM">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CONTENT_ITEM"/>
+            </column>
+            <column name="TITLE" type="VARCHAR(255)"/>
+            <column name="DESCRIPTION" type="CLOB"/>
+            <column name="CONTENT_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="ims">
+        <createTable tableName="CONTENT_ITEM_CLASSROOM_LINK">
+            <column name="CLASSROOM_ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CONTENT_ITEM_CLASSROOM_LINK"/>
+            </column>
+            <column name="CONTENT_ITEM_ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CONTENT_ITEM_CLASSROOM_LINK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="ims">
+        <createTable tableName="COURSE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_COURSE"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="ims">
+        <createTable tableName="ENROLMENT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ENROLMENT"/>
+            </column>
+            <column name="STUDENT_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INTAKE_MODULE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CLASSROOM_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="7" author="ims">
+        <createTable tableName="INTAKE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_INTAKE"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="START_DATE" type="DATE"/>
+            <column name="LEVEL_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="8" author="ims">
+        <createTable tableName="INTAKE_MODULE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_INTAKE_MODULE"/>
+            </column>
+            <column name="INTAKE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MODULE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="9" author="ims">
+        <createTable tableName="LEVEL_">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_LEVEL_"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="COURSE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="10" author="ims">
+        <createTable tableName="MODULE_">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MODULE_"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="LEVEL_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="11" author="ims">
+        <createTable tableName="MODULE_CONTENT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MODULE_CONTENT"/>
+            </column>
+            <column name="TITLE" type="VARCHAR(255)"/>
+            <column name="DESCRIPTION" type="CLOB"/>
+            <column name="INTAKE_MODULE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MODULE_FEE" type="DOUBLE"/>
+            <column name="PAYMENT_OPTIONS" type="CLOB"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="12" author="ims">
+        <createTable tableName="PAYMENT_HISTORY">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PAYMENT_HISTORY"/>
+            </column>
+            <column name="ENROLMENT_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AMOUNT" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="13" author="ims">
+        <createIndex indexName="IDX_BATCH_INTAKE" tableName="BATCH">
+            <column name="INTAKE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="INTAKE_ID" baseTableName="BATCH" constraintName="FK_BATCH_ON_INTAKE"
+                                 referencedColumnNames="ID" referencedTableName="INTAKE"/>
+    </changeSet>
+    <changeSet id="14" author="ims">
+        <createIndex indexName="IDX_CLASSROOM_BATCH" tableName="CLASSROOM">
+            <column name="BATCH_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="BATCH_ID" baseTableName="CLASSROOM"
+                                 constraintName="FK_CLASSROOM_ON_BATCH" referencedColumnNames="ID"
+                                 referencedTableName="BATCH"/>
+    </changeSet>
+    <changeSet id="15" author="ims">
+        <createIndex indexName="IDX_CLASSROOM_INTAKE_MODULE" tableName="CLASSROOM">
+            <column name="INTAKE_MODULE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="INTAKE_MODULE_ID" baseTableName="CLASSROOM"
+                                 constraintName="FK_CLASSROOM_ON_INTAKE_MODULE" referencedColumnNames="ID"
+                                 referencedTableName="INTAKE_MODULE"/>
+    </changeSet>
+    <changeSet id="16" author="ims">
+        <createIndex indexName="IDX_CLASSROOM_LECTURER" tableName="CLASSROOM">
+            <column name="LECTURER_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="LECTURER_ID" baseTableName="CLASSROOM"
+                                 constraintName="FK_CLASSROOM_ON_LECTURER" referencedColumnNames="ID"
+                                 referencedTableName="USER_"/>
+    </changeSet>
+    <changeSet id="17" author="ims">
+        <createIndex indexName="IDX_CONTENT_ITEM_CONTENT" tableName="CONTENT_ITEM">
+            <column name="CONTENT_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="CONTENT_ID" baseTableName="CONTENT_ITEM"
+                                 constraintName="FK_CONTENT_ITEM_ON_CONTENT" referencedColumnNames="ID"
+                                 referencedTableName="MODULE_CONTENT"/>
+    </changeSet>
+    <changeSet id="18" author="ims">
+        <createIndex indexName="IDX_ENROLMENT_ASSIGNED_CLASS" tableName="ENROLMENT">
+            <column name="CLASSROOM_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="CLASSROOM_ID" baseTableName="ENROLMENT"
+                                 constraintName="FK_ENROLMENT_ON_CLASSROOM" referencedColumnNames="ID"
+                                 referencedTableName="CLASSROOM"/>
+    </changeSet>
+    <changeSet id="19" author="ims">
+        <createIndex indexName="IDX_ENROLMENT_INTAKE_MODULE" tableName="ENROLMENT">
+            <column name="INTAKE_MODULE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="INTAKE_MODULE_ID" baseTableName="ENROLMENT"
+                                 constraintName="FK_ENROLMENT_ON_INTAKE_MODULE" referencedColumnNames="ID"
+                                 referencedTableName="INTAKE_MODULE"/>
+    </changeSet>
+    <changeSet id="20" author="ims">
+        <createIndex indexName="IDX_ENROLMENT_STUDENT" tableName="ENROLMENT">
+            <column name="STUDENT_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="STUDENT_ID" baseTableName="ENROLMENT"
+                                 constraintName="FK_ENROLMENT_ON_STUDENT" referencedColumnNames="ID"
+                                 referencedTableName="USER_"/>
+    </changeSet>
+    <changeSet id="21" author="ims">
+        <createIndex indexName="IDX_INTAKE_LEVEL" tableName="INTAKE">
+            <column name="LEVEL_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="LEVEL_ID" baseTableName="INTAKE" constraintName="FK_INTAKE_ON_LEVEL"
+                                 referencedColumnNames="ID" referencedTableName="LEVEL_"/>
+    </changeSet>
+    <changeSet id="22" author="ims">
+        <createIndex indexName="IDX_INTAKE_MODULE_INTAKE" tableName="INTAKE_MODULE">
+            <column name="INTAKE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="INTAKE_ID" baseTableName="INTAKE_MODULE"
+                                 constraintName="FK_INTAKE_MODULE_ON_INTAKE" referencedColumnNames="ID"
+                                 referencedTableName="INTAKE"/>
+    </changeSet>
+    <changeSet id="23" author="ims">
+        <createIndex indexName="IDX_INTAKE_MODULE_MODULE" tableName="INTAKE_MODULE">
+            <column name="MODULE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="MODULE_ID" baseTableName="INTAKE_MODULE"
+                                 constraintName="FK_INTAKE_MODULE_ON_MODULE" referencedColumnNames="ID"
+                                 referencedTableName="MODULE_"/>
+    </changeSet>
+    <changeSet id="24" author="ims">
+        <createIndex indexName="IDX_LEVEL__COURSE" tableName="LEVEL_">
+            <column name="COURSE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="COURSE_ID" baseTableName="LEVEL_" constraintName="FK_LEVEL__ON_COURSE"
+                                 referencedColumnNames="ID" referencedTableName="COURSE"/>
+    </changeSet>
+    <changeSet id="25" author="ims">
+        <createIndex indexName="IDX_MODULECONTENT_INTAKEMODULE" tableName="MODULE_CONTENT">
+            <column name="INTAKE_MODULE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="INTAKE_MODULE_ID" baseTableName="MODULE_CONTENT"
+                                 constraintName="FK_MODULECONTE_ON_INTAKEMODUL" referencedColumnNames="ID"
+                                 referencedTableName="INTAKE_MODULE"/>
+    </changeSet>
+    <changeSet id="26" author="ims">
+        <createIndex indexName="IDX_MODULE__LEVEL" tableName="MODULE_">
+            <column name="LEVEL_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="LEVEL_ID" baseTableName="MODULE_" constraintName="FK_MODULE__ON_LEVEL"
+                                 referencedColumnNames="ID" referencedTableName="LEVEL_"/>
+    </changeSet>
+    <changeSet id="27" author="ims">
+        <createIndex indexName="IDX_PAYMENT_HISTORY_ENROLMENT" tableName="PAYMENT_HISTORY">
+            <column name="ENROLMENT_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="ENROLMENT_ID" baseTableName="PAYMENT_HISTORY"
+                                 constraintName="FK_PAYMENTHISTORY_ON_ENROLMENT" referencedColumnNames="ID"
+                                 referencedTableName="ENROLMENT"/>
+    </changeSet>
+    <changeSet id="28" author="ims">
+        <addForeignKeyConstraint baseColumnNames="CLASSROOM_ID" baseTableName="CONTENT_ITEM_CLASSROOM_LINK"
+                                 constraintName="FK_CONITECLA_ON_CLASSROOM" referencedColumnNames="ID"
+                                 referencedTableName="CLASSROOM"/>
+    </changeSet>
+    <changeSet id="29" author="ims">
+        <addForeignKeyConstraint baseColumnNames="CONTENT_ITEM_ID" baseTableName="CONTENT_ITEM_CLASSROOM_LINK"
+                                 constraintName="FK_CONITECLA_ON_CONTENT_ITEM" referencedColumnNames="ID"
+                                 referencedTableName="CONTENT_ITEM"/>
+    </changeSet>
+</databaseChangeLog>

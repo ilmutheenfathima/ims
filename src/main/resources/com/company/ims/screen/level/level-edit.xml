@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://levelEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="levelDc"
+                  class="com.company.ims.entity.Level">
+            <fetchPlan extends="_base">
+                <property name="course" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+        <collection id="coursesDc" class="com.company.ims.entity.Course">
+            <fetchPlan extends="_base"/>
+            <loader id="coursesDl">
+                <query>
+                    <![CDATA[select e from Course e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="levelDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <entityComboBox id="courseField" property="course" optionsContainer="coursesDc" required="true" nullOptionVisible="false"/>
+<!--                <entityPicker id="courseField" property="course">-->
+<!--                    <actions>-->
+<!--                        <action id="entityLookup" type="entity_lookup"/>-->
+<!--                        <action id="entityClear" type="entity_clear"/>-->
+<!--                    </actions>-->
+<!--                </entityPicker>-->
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -60,12 +60,17 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
                 .findAny();
         isLecturer = lecturerRoleFound.isPresent();
 
+        // hiding unwanted menu items from admin
         if (!isStudent && mainMenu.getMenuItem("StudentHomeScreen") != null) {
             mainMenu.removeMenuItem(Objects.requireNonNull(mainMenu.getMenuItem("StudentHomeScreen")));
         }
 
         if (!isLecturer && mainMenu.getMenuItem("LecturerHomeScreen") != null) {
             mainMenu.removeMenuItem(Objects.requireNonNull(mainMenu.getMenuItem("LecturerHomeScreen")));
+        }
+
+        if (!isLecturer && mainMenu.getMenuItem("CashierHomeScreen") != null) {
+            mainMenu.removeMenuItem(Objects.requireNonNull(mainMenu.getMenuItem("CashierHomeScreen")));
         }
 
     }

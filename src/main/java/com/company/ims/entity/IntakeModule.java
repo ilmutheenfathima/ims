@@ -1,6 +1,7 @@
 package com.company.ims.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
@@ -33,7 +34,8 @@ public class IntakeModule {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Module module;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "intakeModule")
+    @JoinColumn(name = "MODULE_CONTENT_ID")
+    @OneToOne(fetch = FetchType.LAZY)
     private ModuleContent moduleContent;
 
     public ModuleContent getModuleContent() {
@@ -78,5 +80,10 @@ public class IntakeModule {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    @InstanceName
+    public String getModuleName() {
+        return module.getName();
     }
 }

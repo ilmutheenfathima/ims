@@ -19,14 +19,27 @@ public class Module {
     @Id
     private UUID id;
 
+    @Column(name = "CODE", nullable = false)
+    @NotNull
+    private String code;
+
+    @NotNull
     @InstanceName
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = false)
     private String name;
 
     @JoinColumn(name = "LEVEL_ID", nullable = false)
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Level level;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public Level getLevel() {
         return level;

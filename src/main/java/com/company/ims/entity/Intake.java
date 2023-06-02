@@ -38,6 +38,17 @@ public class Intake {
     @OneToMany(mappedBy = "intake")
     private List<Batch> batches;
 
+    @OneToMany(mappedBy = "intake")
+    private List<IntakeModule> intakeModules;
+
+    public List<IntakeModule> getIntakeModules() {
+        return intakeModules;
+    }
+
+    public void setIntakeModules(List<IntakeModule> intakeModules) {
+        this.intakeModules = intakeModules;
+    }
+
     public List<Batch> getBatches() {
         return batches;
     }

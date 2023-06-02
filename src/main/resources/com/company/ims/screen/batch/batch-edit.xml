@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://batchEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="batchDc"
+                  class="com.company.ims.entity.Batch">
+            <fetchPlan extends="_base">
+                <property name="intake" fetchPlan="_base">
+                    <property name="level" fetchPlan="_base">
+                        <property name="course" fetchPlan="_base"/>
+                    </property>
+                </property>
+            </fetchPlan>
+            <loader/>
+        </instance>
+        <collection id="intakesDc" class="com.company.ims.entity.Intake">
+            <fetchPlan extends="_base"/>
+            <loader id="intakesDl">
+                <query>
+                    <![CDATA[select e from Intake e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="batchDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <entityComboBox id="intakeField"  property="intake" optionsContainer="intakesDc" required="true" nullOptionVisible="false"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
