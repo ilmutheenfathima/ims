@@ -16,6 +16,13 @@
                   spacing="true"
                   stylename="jmix-login-panel"
                   width="AUTO">
+                <image id="logoImage"
+                       align="MIDDLE_CENTER"
+                       stylename="app-icon" scaleMode="SCALE_DOWN" width="115px">
+                    <resource>
+                        <theme path="branding/app-icon-login.png"/>
+                    </resource>
+                </image>
                 <label id="welcomeLabel"
                        align="MIDDLE_CENTER"
                        stylename="jmix-login-caption"
@@ -50,7 +57,7 @@
                     <button id="loginButton"
                             align="MIDDLE_CENTER"
                             action="submit"
-                            stylename="jmix-login-submit-button"/>
+                            stylename="jmix-login-submit-button ims-login-submit-button"/>
                 </vbox>
             </vbox>
         </vbox>
