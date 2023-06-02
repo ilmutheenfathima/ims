@@ -4,6 +4,8 @@ import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @JmixEntity
 @Entity
@@ -14,6 +16,17 @@ public class Lecturer extends User {
 
     @Column(name = "ADDRESS")
     private String address;
+
+    @OneToMany(mappedBy = "lecturer")
+    private List<Classroom> classrooms;
+
+    public List<Classroom> getClassrooms() {
+        return classrooms;
+    }
+
+    public void setClassrooms(List<Classroom> classrooms) {
+        this.classrooms = classrooms;
+    }
 
     public void setLecturerId(String lecturerId) {
         this.lecturerId = lecturerId;
