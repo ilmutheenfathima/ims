@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
         caption="msg://intakeModuleBrowse.caption"
         focusComponent="intakeModulesTable">
     <data readOnly="true">
@@ -9,6 +8,7 @@
             <fetchPlan extends="_base">
                 <property fetchPlan="_base" name="intake"/>
                 <property fetchPlan="_base" name="module"/>
+                <property fetchPlan="_base" name="moduleContent"/>
             </fetchPlan>
             <loader id="intakeModulesDl">
                 <query>
@@ -35,26 +35,28 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="intakeModulesTable" spacing="true">
-<!--        <filter id="filter"-->
-<!--                dataLoader="intakeModulesDl">-->
-<!--            <properties include=".*"/>-->
-<!--        </filter>-->
+        <!--        <filter id="filter"-->
+        <!--                dataLoader="intakeModulesDl">-->
+        <!--            <properties include=".*"/>-->
+        <!--        </filter>-->
         <groupTable id="intakeModulesTable"
                     width="100%"
                     dataContainer="intakeModulesDc">
             <actions>
                 <action id="create" type="create" caption="msg://create.caption"/>
-<!--                <action id="edit" type="edit"/>-->
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
                 <column id="module"/>
+                <column id="moduleContent.moduleFee"/>
+<!--                <column id="moduleContent.paymentOptions"/>-->
+                <column id="details" caption="msg://action.caption"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
                 <button id="createBtn" action="intakeModulesTable.create"/>
-<!--                <button id="editBtn" action="intakeModulesTable.edit"/>-->
+                <!--                <button id="editBtn" action="intakeModulesTable.edit"/>-->
                 <button id="removeBtn" action="intakeModulesTable.remove"/>
             </buttonsPanel>
         </groupTable>

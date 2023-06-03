@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://enrolmentScreen.caption"
+        focusComponent="classroomsTable">
+    <data readOnly="true">
+        <collection id="classroomsDc"
+                    class="com.company.ims.entity.Classroom">
+            <fetchPlan extends="_base">
+                <property name="batch" fetchPlan="_base">
+                    <property name="intake" fetchPlan="_base">
+                        <property name="level" fetchPlan="_base">
+                            <property name="course" fetchPlan="_base"/>
+                        </property>
+                    </property>
+                </property>
+                <property name="intakeModule" fetchPlan="_base">
+                    <property name="module" fetchPlan="_base"/>
+                </property>
+                <property name="enrolments" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="classroomsDl">
+                <query>
+                    <![CDATA[select e from Classroom e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="classroomsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="classroomsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="classroomsTable"
+                    width="100%"
+                    dataContainer="classroomsDc">
+            <actions>
+            </actions>
+            <columns>
+                <column id="batch.intake.level.course"/>
+                <column id="batch.intake.level"/>
+                <column id="batch.intake"/>
+                <column id="batch"/>
+                <column id="intakeModule.module"/>
+                <column id="name"/>
+                <column id="startDate"/>
+                <column id="endDate"/>
+                <column id="enrolledCount" caption="msg://enrolledCount.caption"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

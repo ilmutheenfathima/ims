@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://enrolmentBrowse.caption"
+        focusComponent="enrolmentsTable">
+    <data readOnly="true">
+        <collection id="enrolmentsDc"
+                    class="com.company.ims.entity.Enrolment">
+            <fetchPlan extends="_base">
+                <property name="student" fetchPlan="_base"/>
+                <property name="intakeModule" fetchPlan="_base">
+                    <property name="module" fetchPlan="_base"/>
+                    <property name="moduleContent" fetchPlan="_base"/>
+                </property>
+                <property name="payments" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="enrolmentsDl">
+                <query>
+                    <![CDATA[select e from Enrolment e
+                    where e.classroom = :classroom  ]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="enrolmentsTable" spacing="false">
+        <filter id="filter"
+                dataLoader="enrolmentsDl">
+            <properties include=".*"/>
+        </filter>
+        <label stylename="bold" id="moduleFeeLabel"/>
+        <label stylename="bold" id="modulePaymentOptionLabel"/>
+        <groupTable id="enrolmentsTable"
+                    width="100%"
+                    dataContainer="enrolmentsDc">
+            <actions>
+            </actions>
+            <columns>
+                <column id="student.studentId"/>
+                <column id="student"/>
+                <column id="totalPaid" caption="msg://totalPaid.caption"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

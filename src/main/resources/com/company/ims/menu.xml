@@ -7,6 +7,8 @@
               caption="msg://com.company.ims.screen.course/courseBrowse.menu" icon="font-icon:BOOK"/>
         <item screen="Level_.browse" caption="msg://com.company.ims.screen.level/levelBrowse.menu"
               icon="font-icon:LIST"/>
+        <item screen="Enrolment.browse" caption="msg://com.company.ims.screen.enrolment/enrolmentBrowse.menu"/>
+        <item screen="Payment.browse" caption="msg://com.company.ims.screen.payment/paymentBrowse.menu"/>
     </menu>
 
     <menu id="intakeMenu" caption="msg://com.company.ims/menu.intakes" icon="font-icon:OBJECT_GROUP"
@@ -27,6 +29,7 @@
         <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption"
               icon="font-icon:USER"/>
     </menu>
+    <item screen="Enrolment.screen" caption="msg://com.company.ims.screen.classroom/enrolmentScreen.menu"  icon="font-icon:SHOPPING_BAG"/>
 
     <item screen="CalendarScreen" id="CalendarScreen"
           caption="msg://com.company.ims.screen.calendar/calendarScreen.caption" icon="font-icon:CALENDAR"/>

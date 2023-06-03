@@ -134,4 +134,8 @@ public class Enrolment {
     public void setId(UUID id) {
         this.id = id;
     }
+
+    public String getIdentifiableName(){
+        return "Student: " + student.getStudentId() + " - " + student.getFullName() + " enrolment for Class: " + classroom;
+    }
 }
