@@ -56,11 +56,23 @@ public class Classroom {
     @JoinColumn(name = "INTAKE_MODULE_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private IntakeModule intakeModule;
+
     @JoinTable(name = "CONTENT_ITEM_CLASSROOM_LINK",
-            joinColumns = @JoinColumn(name = "CLASSROOM_ID"),
-            inverseJoinColumns = @JoinColumn(name = "CONTENT_ITEM_ID"))
+            joinColumns = @JoinColumn(name = "CLASSROOM_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "CONTENT_ITEM_ID", referencedColumnName = "ID"))
     @ManyToMany
     private List<ContentItem> visibleContentItems;
+
+    @OneToMany(mappedBy = "classroom")
+    private List<Enrolment> enrolments;
+
+    public List<Enrolment> getEnrolments() {
+        return enrolments;
+    }
+
+    public void setEnrolments(List<Enrolment> enrolments) {
+        this.enrolments = enrolments;
+    }
 
     public List<ContentItem> getVisibleContentItems() {
         return visibleContentItems;

@@ -1,5 +1,9 @@
 package com.company.ims.security;
 
+import io.jmix.security.model.EntityAttributePolicyAction;
+import io.jmix.security.model.EntityPolicyAction;
+import io.jmix.security.role.annotation.EntityAttributePolicy;
+import io.jmix.security.role.annotation.EntityPolicy;
 import io.jmix.security.role.annotation.ResourceRole;
 import io.jmix.securityui.role.UiMinimalRole;
 import io.jmix.securityui.role.annotation.MenuPolicy;
@@ -13,7 +17,9 @@ public interface StudentRole extends UiMinimalRole {
 
     String CODE = "student-role";
 
-    @MenuPolicy(menuIds = "StudentHomeScreen")
-    @ScreenPolicy(screenIds = {"StudentHomeScreen", "ChangePasswordDialog", "Student.edit", "themeSettingsScreen"})
+    @MenuPolicy(menuIds = {"StudentHomeScreen", "CalendarScreen"})
+    @ScreenPolicy(screenIds = {"StudentHomeScreen", "ChangePasswordDialog", "Student.edit", "themeSettingsScreen", "CalendarScreen"})
+    @EntityPolicy(entityName = "*", actions = {EntityPolicyAction.ALL})
+    @EntityAttributePolicy(entityName = "*", attributes = "*", action = EntityAttributePolicyAction.MODIFY)
     void screens();
 }

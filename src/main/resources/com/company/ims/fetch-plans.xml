@@ -1,0 +1,8 @@
+<fetchPlans xmlns="http://jmix.io/schema/core/fetch-plans">
+    <fetchPlan entity="Classroom" name="classroom-fetch-for-events" extends="_base">
+        <property name="lecturer" fetchPlan="_base"/>
+        <property name="intakeModule" fetchPlan="_base">
+            <property name="module" fetchPlan="_base"/>
+        </property>
+    </fetchPlan>
+</fetchPlans>

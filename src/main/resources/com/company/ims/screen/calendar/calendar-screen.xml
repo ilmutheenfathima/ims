@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://calendarScreen.caption">
+    <dialogMode height="600"
+                width="800"/>
+    <layout  height="100%" expand="calendar">
+        <hbox spacing="true" height="35px" width="100%">
+            <label align="TOP_LEFT" stylename="bold" id="monthLabel"/>
+
+            <buttonsPanel align="TOP_RIGHT">
+                <button id="calendarPreviousBtn" icon="font-icon:BACKWARD"/>
+                <button id="todayBtn" caption="msg://todayBtn.caption"/>
+                <button id="calendarNextBtn" icon="font-icon:FORWARD"/>
+            </buttonsPanel>
+        </hbox>
+        <calendar id="calendar"
+                  startDate="2023-05-01"
+                  endDate="2023-05-07"
+                  captionProperty="description"
+                  descriptionProperty="description"
+                  datatype="localDateTime"
+                  endDateProperty="date"
+                  startDateProperty="date"
+                  width="100%"
+                  stylenameProperty="styleName" enable="false"/>
+    </layout>
+</window>

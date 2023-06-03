@@ -124,7 +124,7 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
         for (AppMenu.MenuItem menuItem : menuItems) {
             rightMenu.removeMenuItem(menuItem);
         }
-        AppMenu.MenuItem rootItem = rightMenu.createMenuItem("settings", "", "font-icon:GEAR", null);
+        AppMenu.MenuItem rootItem = rightMenu.createMenuItem("settings", "", "font-icon:LIST", null);
         AppMenu.MenuItem changeTheme = rightMenu.createMenuItem("changeTheme", "Change Theme",
                 "font-icon:PAINT_BRUSH", menuItem -> screenBuilders.screen(this)
                         .withScreenClass(ThemeSettingsScreen.class)

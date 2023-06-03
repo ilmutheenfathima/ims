@@ -56,6 +56,13 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Column(name = "TIME_ZONE_ID")
     protected String timeZoneId;
 
+    @Column(name = "DTYPE")
+    protected String dtype;
+
+    public String getDtype() {
+        return dtype;
+    }
+
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
 

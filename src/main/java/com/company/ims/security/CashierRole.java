@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 public interface CashierRole extends UiMinimalRole {
     String CODE = "cashier-role";
 
-    @MenuPolicy(menuIds = "CashierHomeScreen")
-    @ScreenPolicy(screenIds = "CashierHomeScreen")
+    @MenuPolicy(menuIds = {"CashierHomeScreen", "CalendarScreen"})
+    @ScreenPolicy(screenIds = {"CashierHomeScreen", "CalendarScreen"})
     void screens();
 }

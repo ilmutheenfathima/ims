@@ -16,18 +16,20 @@
         <item screen="Batch.browse" caption="msg://com.company.ims.screen.batch/batchBrowse.menu"
               icon="font-icon:ALIGN_RIGHT"/>
     </menu>
-
+    <item screen="Student.browse"
+          caption="msg://com.company.ims.screen.student/studentBrowse.menu" icon="font-icon:PENCIL"/>
+    <item screen="Lecturer.browse"
+          caption="msg://com.company.ims.screen.lecturer/lecturerBrowse.menu" icon="font-icon:MORTAR_BOARD"/>
     <menu id="usersMenu" caption="msg://com.company.ims/menu.users" icon="font-icon:USERS"
           insertBefore="administration">
-        <item screen="Student.browse"
-              caption="msg://com.company.ims.screen.student/studentBrowse.menu" icon="font-icon:PENCIL"/>
-        <item screen="Lecturer.browse"
-              caption="msg://com.company.ims.screen.lecturer/lecturerBrowse.menu" icon="font-icon:MORTAR_BOARD"/>
         <item screen="Cashier.browse"
               caption="msg://com.company.ims.screen.cashier/cashierBrowse.menu" icon="font-icon:MONEY"/>
         <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption"
               icon="font-icon:USER"/>
     </menu>
+
+    <item screen="CalendarScreen" id="CalendarScreen"
+          caption="msg://com.company.ims.screen.calendar/calendarScreen.caption" icon="font-icon:CALENDAR"/>
 
     <item screen="StudentHomeScreen" id="StudentHomeScreen"
           caption="msg://com.company.ims.screen.studenthome/studentHomeScreen.caption" icon="font-icon:NEWSPAPER_O"/>

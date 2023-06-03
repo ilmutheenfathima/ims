@@ -16,8 +16,8 @@ import javax.annotation.Nonnull;
 public interface LecturerRole extends UiMinimalRole {
     String CODE = "lecturer-role";
 
-    @MenuPolicy(menuIds = {"LecturerHomeScreen"})
-    @ScreenPolicy(screenIds = {"LecturerHomeScreen", "ChangePasswordDialog", "User.edit", "Lecturer.edit", "themeSettingsScreen"})
+    @MenuPolicy(menuIds = {"LecturerHomeScreen","CalendarScreen"})
+    @ScreenPolicy(screenIds = {"LecturerHomeScreen", "ChangePasswordDialog", "User.edit", "Lecturer.edit", "themeSettingsScreen", "CalendarScreen"})
     @EntityPolicy(entityName = "*", actions = {EntityPolicyAction.ALL})
     @EntityAttributePolicy(entityName = "*", attributes = "*", action = EntityAttributePolicyAction.MODIFY)
     void screens();
