@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://enrolmentEdit.caption"
-        focusComponent="form">
+        caption="msg://enrolmentEdit.caption">
     <data>
         <instance id="enrolmentDc"
                   class="com.company.ims.entity.Enrolment">
