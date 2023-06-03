@@ -22,8 +22,8 @@
     <facets>
         <dataLoadCoordinator auto="true"/>
     </facets>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="AUTO"
+                width="AUTO"/>
     <layout spacing="true" expand="editActions">
         <form id="form" dataContainer="userDc">
             <column width="350px">
@@ -39,7 +39,6 @@
                 <textField id="firstNameField" property="firstName"/>
                 <textField id="lastNameField" property="lastName"/>
                 <textField id="emailField" property="email"/>
-                <comboBox id="timeZoneField" property="timeZoneId"/>
                 <checkBox id="activeField" property="active"/>
             </column>
         </form>

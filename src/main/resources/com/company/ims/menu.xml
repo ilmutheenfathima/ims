@@ -38,5 +38,4 @@
     <item screen="CashierHomeScreen" id="CashierHomeScreen"
           caption="msg://com.company.ims.screen.cashierhome/cashierHomeScreen.caption" icon="font-icon:MONEY"/>
 
-    <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
 </menu-config>

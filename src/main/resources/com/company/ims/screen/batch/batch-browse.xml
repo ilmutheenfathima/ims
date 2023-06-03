@@ -37,10 +37,10 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="batchesTable" spacing="true">
-        <filter id="filter"
-                dataLoader="batchesDl">
-            <properties include=".*"/>
-        </filter>
+<!--        <filter id="filter"-->
+<!--                dataLoader="batchesDl">-->
+<!--            <properties include=".*"/>-->
+<!--        </filter>-->
         <groupTable id="batchesTable"
                     width="100%"
                     dataContainer="batchesDc">

@@ -19,17 +19,21 @@
                   align="MIDDLE_LEFT"/>
             <userIndicator id="userIndicator"
                            align="MIDDLE_LEFT"/>
-            <timeZoneIndicator id="timeZoneIndicator"
-                               align="MIDDLE_LEFT"/>
+            <image id="userImage"
+                   align="MIDDLE_CENTER" scaleMode="SCALE_DOWN" stylename="app-icon" property="userImage"
+                   css="cursor: pointer">
+            </image>
             <hbox id="mainButtonsBox"
                   align="MIDDLE_LEFT"
                   stylename="jmix-main-buttons">
-                <newWindowButton id="newWindowButton"
-                                 icon="TH_LARGE"
-                                 description="msg://newWindowBtnDescription"/>
-                <logoutButton id="logoutButton"
-                              description="msg://logoutBtnDescription"
-                              icon="SIGN_OUT"/>
+                <menu id="rightMenu"
+                      align="MIDDLE_RIGHT"/>
+<!--                <newWindowButton id="newWindowButton"-->
+<!--                                 icon="TH_LARGE"-->
+<!--                                 description="msg://newWindowBtnDescription"/>-->
+<!--                <logoutButton id="logoutButton"-->
+<!--                              description="msg://logoutBtnDescription"-->
+<!--                              icon="SIGN_OUT"/>-->
             </hbox>
         </hbox>
         <workArea id="workArea"

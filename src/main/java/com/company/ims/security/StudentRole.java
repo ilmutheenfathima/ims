@@ -13,8 +13,7 @@ public interface StudentRole extends UiMinimalRole {
 
     String CODE = "student-role";
 
-
     @MenuPolicy(menuIds = "StudentHomeScreen")
-    @ScreenPolicy(screenIds = "StudentHomeScreen")
+    @ScreenPolicy(screenIds = {"StudentHomeScreen", "ChangePasswordDialog", "Student.edit", "themeSettingsScreen"})
     void screens();
 }

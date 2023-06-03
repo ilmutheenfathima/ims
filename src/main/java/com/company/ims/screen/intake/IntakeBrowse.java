@@ -6,9 +6,11 @@ import io.jmix.ui.ScreenBuilders;
 import io.jmix.ui.UiComponents;
 import io.jmix.ui.component.Component;
 import io.jmix.ui.component.LinkButton;
+import io.jmix.ui.navigation.Route;
 import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@Route("intakes")
 @UiController("Intake.browse")
 @UiDescriptor("intake-browse.xml")
 @LookupComponent("intakesTable")
@@ -28,7 +30,7 @@ public class IntakeBrowse extends StandardLookup<Intake> {
         linkButton.addClickListener(clickEvent -> {
             IntakeModuleBrowse intakeModuleBrowse = screenBuilders.screen(this)
                     .withScreenClass(IntakeModuleBrowse.class)
-                    .withOpenMode(OpenMode.THIS_TAB)
+                    .withOpenMode(OpenMode.DIALOG)
                     .build();
             intakeModuleBrowse.setIntake(intake);
             intakeModuleBrowse.show();

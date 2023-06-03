@@ -4,9 +4,11 @@ import com.company.ims.entity.Batch;
 import com.company.ims.entity.Classroom;
 import io.jmix.core.DataManager;
 import io.jmix.ui.model.CollectionLoader;
+import io.jmix.ui.navigation.Route;
 import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@Route("classrooms")
 @UiController("Classroom.browse")
 @UiDescriptor("classroom-browse.xml")
 @LookupComponent("classroomsTable")

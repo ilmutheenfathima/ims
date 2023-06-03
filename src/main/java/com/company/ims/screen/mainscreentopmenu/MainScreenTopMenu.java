@@ -1,22 +1,28 @@
 package com.company.ims.screen.mainscreentopmenu;
 
+import com.company.ims.entity.User;
+import com.company.ims.screen.user.UserEdit;
 import com.company.ims.security.LecturerRole;
 import com.company.ims.security.StudentRole;
 import io.jmix.core.security.CurrentAuthentication;
-import io.jmix.ui.ScreenTools;
+import io.jmix.securityui.screen.changepassword.ChangePasswordDialog;
+import io.jmix.ui.*;
+import io.jmix.ui.app.inputdialog.DialogActions;
+import io.jmix.ui.app.inputdialog.DialogOutcome;
+import io.jmix.ui.app.themesettings.ThemeSettingsScreen;
 import io.jmix.ui.component.AppWorkArea;
+import io.jmix.ui.component.ClasspathResource;
+import io.jmix.ui.component.Image;
 import io.jmix.ui.component.Window;
 import io.jmix.ui.component.mainwindow.AppMenu;
 import io.jmix.ui.navigation.Route;
-import io.jmix.ui.screen.Screen;
-import io.jmix.ui.screen.Subscribe;
-import io.jmix.ui.screen.UiController;
-import io.jmix.ui.screen.UiControllerUtils;
-import io.jmix.ui.screen.UiDescriptor;
+import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -34,7 +40,20 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
     private AppMenu mainMenu;
 
     @Autowired
+    private AppMenu rightMenu;
+
+    @Autowired
+    private Image userImage;
+
+    @Autowired
+    private Notifications notifications;
+
+    @Autowired
     private CurrentAuthentication currentAuthentication;
+    @Autowired
+    private ScreenBuilders screenBuilders;
+    @Autowired
+    private Dialogs dialogs;
 
     @Override
     public AppWorkArea getWorkArea() {
@@ -60,7 +79,7 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
                 .findAny();
         isLecturer = lecturerRoleFound.isPresent();
 
-        // hiding unwanted menu items from admin
+        // hiding unwanted menu items from admin user
         if (!isStudent && mainMenu.getMenuItem("StudentHomeScreen") != null) {
             mainMenu.removeMenuItem(Objects.requireNonNull(mainMenu.getMenuItem("StudentHomeScreen")));
         }
@@ -73,6 +92,44 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
             mainMenu.removeMenuItem(Objects.requireNonNull(mainMenu.getMenuItem("CashierHomeScreen")));
         }
 
+        createRightMenu();
+    }
+
+    private void createRightMenu() {
+        userImage.setSource(ClasspathResource.class)
+                .setPath("com/company/ims/screen/mainscreentopmenu/defaultProfileImage.png");
+        List<AppMenu.MenuItem> menuItems = rightMenu.getMenuItems();
+        for (AppMenu.MenuItem menuItem : menuItems) {
+            rightMenu.removeMenuItem(menuItem);
+        }
+        AppMenu.MenuItem rootItem = rightMenu.createMenuItem("settings", "", "font-icon:GEAR", null);
+        AppMenu.MenuItem changeTheme = rightMenu.createMenuItem("changeTheme", "Change Theme",
+                "font-icon:PAINT_BRUSH", menuItem -> screenBuilders.screen(this)
+                        .withScreenClass(ThemeSettingsScreen.class)
+                        .withOpenMode(OpenMode.NEW_TAB)
+                        .build()
+                        .show());
+        AppMenu.MenuItem changePassword = rightMenu.createMenuItem("changePassword", "Change Password",
+                "font-icon:LOCK", menuItem -> {
+                    showChangePasswordDialog();
+                });
+        AppMenu.MenuItem logout = rightMenu.createMenuItem("logout", "Log out",
+                "font-icon:SIGN_OUT",
+                menuItem -> dialogs.createInputDialog(this)
+                        .withCaption("Do you want to sign out ?")
+                        .withActions(DialogActions.YES_NO)
+                        .withCloseListener(inputDialogCloseEvent -> {
+                            if (inputDialogCloseEvent.closedWith(DialogOutcome.YES)) {
+                                App.getInstance().logout();
+                            }
+                        }).show()
+        );
+        rootItem.addChildItem(changeTheme);
+        rootItem.addChildItem(changePassword);
+        rootItem.addChildItem(rightMenu.createSeparator());
+        rootItem.addChildItem(logout);
+
+        rightMenu.addMenuItem(rootItem, 0);
     }
 
     @Subscribe
@@ -81,5 +138,39 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
                 UiControllerUtils.getScreenContext(this).getScreens());
 
         screenTools.handleRedirect();
+    }
+
+    @Install(to = "userIndicator", subject = "formatter")
+    private String userIndicatorFormatter(UserDetails value) {
+        return ((User) value).getFullName();
+    }
+
+    @Subscribe("userImage")
+    public void onUserImageClick(Image.ClickEvent event) {
+        User user = (User) currentAuthentication.getUser();
+        UserEdit userEditor = (UserEdit) screenBuilders.editor(User.class, this)
+                .editEntity(user)
+                .withScreenClass(UserEdit.class)
+                .withOpenMode(OpenMode.DIALOG)
+                .build();
+        userEditor.setOwnUserEditor(true);
+        userEditor.addAfterCloseListener(afterCloseEvent -> {
+            notifications.create()
+                    .withCaption("Some changes will be applied after next sign in")
+                    .withType(Notifications.NotificationType.HUMANIZED)
+                    .show();
+        });
+        userEditor.show();
+    }
+
+    public void showChangePasswordDialog() {
+        final Screen frameOwner = Objects.requireNonNull(AppUI.getCurrent()).getTopLevelWindowNN().getFrameOwner();
+
+        screenBuilders.screen(frameOwner)
+                .withScreenClass(ChangePasswordDialog.class)
+                .build()
+                .withUsername(currentAuthentication.getUser().getUsername())
+                .withCurrentPasswordRequired(true)
+                .show();
     }
 }

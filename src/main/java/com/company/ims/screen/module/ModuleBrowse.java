@@ -4,9 +4,11 @@ import com.company.ims.entity.Level;
 import com.company.ims.entity.Module;
 import io.jmix.core.DataManager;
 import io.jmix.ui.model.CollectionLoader;
+import io.jmix.ui.navigation.Route;
 import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@Route("modules")
 @UiController("Module_.browse")
 @UiDescriptor("module-browse.xml")
 @LookupComponent("modulesTable")

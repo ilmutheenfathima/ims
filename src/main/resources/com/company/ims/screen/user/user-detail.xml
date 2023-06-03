@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
         xmlns:c="http://jmix.io/schema/ui/jpql-condition"
-        caption="msg://intakeBrowse.caption"
-        focusComponent="intakesTable">
+        caption="msg://userDetail.caption"
+        focusComponent="usersTable">
     <data readOnly="true">
-        <collection id="intakesDc"
-                    class="com.company.ims.entity.Intake">
-            <fetchPlan extends="_base">
-                <property name="level" fetchPlan="_base">
-                    <property name="course" fetchPlan="_base"/>
-                </property>
-            </fetchPlan>
-            <loader id="intakesDl">
+        <collection id="usersDc"
+                    class="com.company.ims.entity.User">
+            <fetchPlan extends="_base"/>
+            <loader id="usersDl">
                 <query>
-                    <![CDATA[select e from Intake e]]>
+                    <![CDATA[select e from User e]]>
                 </query>
             </loader>
         </collection>
@@ -34,34 +30,33 @@
     </actions>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="intakesTable" spacing="true">
-<!--        <filter id="filter"-->
-<!--                dataLoader="intakesDl">-->
-<!--            <properties include=".*"/>-->
-<!--        </filter>-->
-        <groupTable id="intakesTable"
+    <layout expand="usersTable" spacing="true">
+        <filter id="filter"
+                dataLoader="usersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="usersTable"
                     width="100%"
-                    dataContainer="intakesDc">
+                    dataContainer="usersDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <group>
-                    <column id="level.course"/>
-                    <column id="level"/>
-                </group>
-                <column id="name"/>
-                <column id="startDate"/>
-                <column id="action" caption="msg://action.caption"/>
+                <column id="username"/>
+                <column id="firstName"/>
+                <column id="lastName"/>
+                <column id="email"/>
+                <column id="active"/>
+                <column id="timeZoneId"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="intakesTable.create"/>
-                <button id="editBtn" action="intakesTable.edit"/>
-                <button id="removeBtn" action="intakesTable.remove"/>
+                <button id="createBtn" action="usersTable.create"/>
+                <button id="editBtn" action="usersTable.edit"/>
+                <button id="removeBtn" action="usersTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

@@ -4,7 +4,7 @@ import com.company.ims.entity.User;
 import io.jmix.core.EntityStates;
 import io.jmix.core.security.event.SingleUserPasswordChangeEvent;
 import io.jmix.ui.Notifications;
-import io.jmix.ui.component.ComboBox;
+import io.jmix.ui.component.CheckBox;
 import io.jmix.ui.component.PasswordField;
 import io.jmix.ui.component.TextField;
 import io.jmix.ui.model.DataContext;
@@ -13,9 +13,7 @@ import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.Arrays;
 import java.util.Objects;
-import java.util.TimeZone;
 
 @UiController("User.edit")
 @UiDescriptor("user-edit.xml")
@@ -23,6 +21,7 @@ import java.util.TimeZone;
 @Route(value = "users/edit", parentPrefix = "users")
 public class UserEdit extends StandardEditor<User> {
 
+    private boolean ownUserEditor = false;
     @Autowired
     private EntityStates entityStates;
 
@@ -44,15 +43,12 @@ public class UserEdit extends StandardEditor<User> {
     @Autowired
     private MessageBundle messageBundle;
 
-    @Autowired
-    private ComboBox<String> timeZoneField;
-
     private boolean isNewEntity;
+    @Autowired
+    private CheckBox activeField;
+    @Autowired
+    private TextField<String> emailField;
 
-    @Subscribe
-    public void onInit(InitEvent event) {
-        timeZoneField.setOptionsList(Arrays.asList(TimeZone.getAvailableIDs()));
-    }
 
     @Subscribe
     public void onInitEntity(InitEntityEvent<User> event) {
@@ -66,6 +62,10 @@ public class UserEdit extends StandardEditor<User> {
     public void onAfterShow(AfterShowEvent event) {
         if (entityStates.isNew(getEditedEntity())) {
             usernameField.focus();
+        }
+        if (ownUserEditor) {
+            activeField.setEditable(false);
+            emailField.setEditable(false);
         }
     }
 
@@ -87,5 +87,9 @@ public class UserEdit extends StandardEditor<User> {
         if (isNewEntity) {
             getApplicationContext().publishEvent(new SingleUserPasswordChangeEvent(getEditedEntity().getUsername(), passwordField.getValue()));
         }
+    }
+
+    public void setOwnUserEditor(boolean ownUserEditor) {
+        this.ownUserEditor = ownUserEditor;
     }
 }

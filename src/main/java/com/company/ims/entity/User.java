@@ -157,8 +157,18 @@ public class User implements JmixUserDetails, HasTimeZone {
     @InstanceName
     @DependsOnProperties({"firstName", "lastName", "username"})
     public String getDisplayName() {
-        return String.format("%s %s [%s]", (firstName != null ? firstName : ""),
-                (lastName != null ? lastName : ""), username).trim();
+        return String.format("%s %s [%s]",
+                (firstName != null ? firstName : ""),
+                (lastName != null ? lastName : ""),
+                username
+        ).trim();
+    }
+
+    public String getFullName() {
+        return String.format("%s %s",
+                (firstName != null ? firstName : ""),
+                (lastName != null ? lastName : "")
+        ).trim();
     }
 
     @Override
