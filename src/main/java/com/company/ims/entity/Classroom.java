@@ -149,4 +149,8 @@ public class Classroom {
     public void setId(UUID id) {
         this.id = id;
     }
+
+    public String getIdentifiableName() {
+        return name + " [Batch: " + batch.getName() + "; Lecturer: " + lecturer.getFullName() + "]";
+    }
 }

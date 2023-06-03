@@ -1,17 +1,19 @@
 package com.company.ims.screen.student;
 
+import com.company.ims.entity.Enrolment;
+import com.company.ims.entity.Student;
 import com.company.ims.entity.User;
 import com.company.ims.security.DatabaseUserRepository;
-import com.company.ims.security.LecturerRole;
 import com.company.ims.security.StudentRole;
+import io.jmix.core.DataManager;
 import io.jmix.core.EntityStates;
 import io.jmix.core.security.event.SingleUserPasswordChangeEvent;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.component.PasswordField;
 import io.jmix.ui.component.TextField;
+import io.jmix.ui.model.CollectionLoader;
 import io.jmix.ui.model.DataContext;
 import io.jmix.ui.screen.*;
-import com.company.ims.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -45,6 +47,10 @@ public class StudentEdit extends StandardEditor<Student> {
     private MessageBundle messageBundle;
 
     private boolean isNewEntity;
+    @Autowired
+    private DataManager dataManager;
+    @Autowired
+    private CollectionLoader<Enrolment> enrolmentsDl;
 
     @Subscribe
     public void onInitEntity(InitEntityEvent<User> event) {
@@ -58,7 +64,11 @@ public class StudentEdit extends StandardEditor<Student> {
     public void onAfterShow(AfterShowEvent event) {
         if (entityStates.isNew(getEditedEntity())) {
             usernameField.focus();
+        } else {
+            usernameField.setEditable(false);
         }
+        enrolmentsDl.setParameter("student", getEditedEntity());
+        enrolmentsDl.load();
     }
 
     @Subscribe
@@ -80,5 +90,12 @@ public class StudentEdit extends StandardEditor<Student> {
             userRepository.addResourceRoleToUser(getEditedEntity(), StudentRole.CODE); // set student role
             getApplicationContext().publishEvent(new SingleUserPasswordChangeEvent(getEditedEntity().getUsername(), passwordField.getValue()));
         }
+    }
+
+    @Install(to = "enrolmentsTable.create", subject = "newEntitySupplier")
+    private Enrolment enrolmentsTableCreateNewEntitySupplier() {
+        Enrolment enrolment = dataManager.create(Enrolment.class);
+        enrolment.setStudent(getEditedEntity());
+        return enrolment;
     }
 }

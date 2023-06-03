@@ -58,6 +58,8 @@ public class LecturerEdit extends StandardEditor<Lecturer> {
     public void onAfterShow(AfterShowEvent event) {
         if (entityStates.isNew(getEditedEntity())) {
             usernameField.focus();
+        } else {
+            usernameField.setEditable(false);
         }
     }
 

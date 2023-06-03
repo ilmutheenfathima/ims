@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
-    <menu id="usersMenu" caption="msg://com.company.ims/menu.users" icon="font-icon:USERS"
-          insertBefore="administration">
-        <item screen="Student.browse"
-              caption="msg://com.company.ims.screen.student/studentBrowse.menu" icon="font-icon:PENCIL"/>
-        <item screen="Lecturer.browse"
-              caption="msg://com.company.ims.screen.lecturer/lecturerBrowse.menu" icon="font-icon:MORTAR_BOARD"/>
-        <item screen="Cashier.browse"
-              caption="msg://com.company.ims.screen.cashier/cashierBrowse.menu" icon="font-icon:MONEY"/>
-        <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption"
-              icon="font-icon:USER"/>
-    </menu>
 
     <menu id="courseMenu" caption="msg://com.company.ims/menu.courses" icon="font-icon:BOOK"
           insertBefore="administration">
@@ -28,6 +17,17 @@
               icon="font-icon:ALIGN_RIGHT"/>
     </menu>
 
+    <menu id="usersMenu" caption="msg://com.company.ims/menu.users" icon="font-icon:USERS"
+          insertBefore="administration">
+        <item screen="Student.browse"
+              caption="msg://com.company.ims.screen.student/studentBrowse.menu" icon="font-icon:PENCIL"/>
+        <item screen="Lecturer.browse"
+              caption="msg://com.company.ims.screen.lecturer/lecturerBrowse.menu" icon="font-icon:MORTAR_BOARD"/>
+        <item screen="Cashier.browse"
+              caption="msg://com.company.ims.screen.cashier/cashierBrowse.menu" icon="font-icon:MONEY"/>
+        <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption"
+              icon="font-icon:USER"/>
+    </menu>
 
     <item screen="StudentHomeScreen" id="StudentHomeScreen"
           caption="msg://com.company.ims.screen.studenthome/studentHomeScreen.caption" icon="font-icon:NEWSPAPER_O"/>

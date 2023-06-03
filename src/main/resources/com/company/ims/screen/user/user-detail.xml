@@ -49,7 +49,6 @@
                 <column id="lastName"/>
                 <column id="email"/>
                 <column id="active"/>
-                <column id="timeZoneId"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

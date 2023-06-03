@@ -10,11 +10,11 @@ import io.jmix.ui.*;
 import io.jmix.ui.app.inputdialog.DialogActions;
 import io.jmix.ui.app.inputdialog.DialogOutcome;
 import io.jmix.ui.app.themesettings.ThemeSettingsScreen;
-import io.jmix.ui.component.AppWorkArea;
-import io.jmix.ui.component.ClasspathResource;
-import io.jmix.ui.component.Image;
-import io.jmix.ui.component.Window;
+import io.jmix.ui.component.*;
 import io.jmix.ui.component.mainwindow.AppMenu;
+import io.jmix.ui.component.mainwindow.Drawer;
+import io.jmix.ui.component.mainwindow.SideMenu;
+import io.jmix.ui.icon.JmixIcon;
 import io.jmix.ui.navigation.Route;
 import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +54,12 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
     private ScreenBuilders screenBuilders;
     @Autowired
     private Dialogs dialogs;
+    @Autowired
+    private Drawer drawer;
+    @Autowired
+    private Button collapseDrawerButton;
+    @Autowired
+    private SideMenu sideMenu;
 
     @Override
     public AppWorkArea getWorkArea() {
@@ -79,6 +85,12 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
                 .findAny();
         isLecturer = lecturerRoleFound.isPresent();
 
+        hideUnwantedScreensForAdmin(isStudent, isLecturer);
+
+        createRightMenu();
+    }
+
+    private void hideUnwantedScreensForAdmin(boolean isStudent, boolean isLecturer) {
         // hiding unwanted menu items from admin user
         if (!isStudent && mainMenu.getMenuItem("StudentHomeScreen") != null) {
             mainMenu.removeMenuItem(Objects.requireNonNull(mainMenu.getMenuItem("StudentHomeScreen")));
@@ -92,7 +104,17 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
             mainMenu.removeMenuItem(Objects.requireNonNull(mainMenu.getMenuItem("CashierHomeScreen")));
         }
 
-        createRightMenu();
+        if (!isStudent && sideMenu.getMenuItem("StudentHomeScreen") != null) {
+            sideMenu.removeMenuItem(Objects.requireNonNull(sideMenu.getMenuItem("StudentHomeScreen")));
+        }
+
+        if (!isLecturer && sideMenu.getMenuItem("LecturerHomeScreen") != null) {
+            sideMenu.removeMenuItem(Objects.requireNonNull(sideMenu.getMenuItem("LecturerHomeScreen")));
+        }
+
+        if (!isLecturer && sideMenu.getMenuItem("CashierHomeScreen") != null) {
+            sideMenu.removeMenuItem(Objects.requireNonNull(sideMenu.getMenuItem("CashierHomeScreen")));
+        }
     }
 
     private void createRightMenu() {
@@ -145,6 +167,11 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
         return ((User) value).getFullName();
     }
 
+    @Install(to = "userIndicator2", subject = "formatter")
+    private String userIndicator2Formatter(UserDetails value) {
+        return userIndicatorFormatter(value);
+    }
+
     @Subscribe("userImage")
     public void onUserImageClick(Image.ClickEvent event) {
         User user = (User) currentAuthentication.getUser();
@@ -172,5 +199,15 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
                 .withUsername(currentAuthentication.getUser().getUsername())
                 .withCurrentPasswordRequired(true)
                 .show();
+    }
+
+    @Subscribe("collapseDrawerButton")
+    private void onCollapseDrawerButtonClick(Button.ClickEvent event) {
+        drawer.toggle();
+        if (drawer.isCollapsed()) {
+            collapseDrawerButton.setIconFromSet(JmixIcon.CHEVRON_RIGHT);
+        } else {
+            collapseDrawerButton.setIconFromSet(JmixIcon.CHEVRON_LEFT);
+        }
     }
 }

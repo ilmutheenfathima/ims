@@ -2,4 +2,10 @@
 
 @mixin ims_theme {
   @include helium;
+
+  .app-title-name {
+    font-size: 25px !important;
+    font-weight: bolder !important;
+    color: white !important;
+  }
 }

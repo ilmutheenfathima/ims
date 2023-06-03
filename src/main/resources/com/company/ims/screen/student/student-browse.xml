@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
         caption="msg://studentBrowse.caption"
         focusComponent="studentsTable">
     <data readOnly="true">
@@ -39,8 +38,16 @@
                     width="100%"
                     dataContainer="studentsDc">
             <actions>
-                <action id="create" type="create"/>
-                <action id="edit" type="edit"/>
+                <action id="create" type="create">
+                    <properties>
+                        <property name="openMode" value="NEW_TAB"/>
+                    </properties>
+                </action>
+                <action id="edit" type="edit">
+                    <properties>
+                        <property name="openMode" value="NEW_TAB"/>
+                    </properties>
+                </action>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
@@ -49,7 +56,6 @@
                 <column id="lastName"/>
                 <column id="email"/>
                 <column id="active"/>
-                <column id="timeZoneId"/>
                 <column id="studentId"/>
                 <column id="address"/>
             </columns>

@@ -37,13 +37,13 @@
                 caption="msg:///actions.Cancel"
                 icon="LOOKUP_CANCEL"/>
     </actions>
-    <dialogMode height="AUTO"
-                width="AUTO"/>
+    <dialogMode height="600"
+                width="800"/>
     <layout expand="classroomsTable" spacing="true">
-        <filter id="filter"
-                dataLoader="classroomsDl">
-            <properties include=".*"/>
-        </filter>
+<!--        <filter id="filter"-->
+<!--                dataLoader="classroomsDl">-->
+<!--            <properties include=".*"/>-->
+<!--        </filter>-->
         <groupTable id="classroomsTable"
                     width="100%"
                     dataContainer="classroomsDc">

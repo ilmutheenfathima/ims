@@ -49,7 +49,6 @@ public class UserEdit extends StandardEditor<User> {
     @Autowired
     private TextField<String> emailField;
 
-
     @Subscribe
     public void onInitEntity(InitEntityEvent<User> event) {
         usernameField.setEditable(true);

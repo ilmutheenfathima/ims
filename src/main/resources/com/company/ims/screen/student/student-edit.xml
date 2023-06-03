@@ -8,6 +8,23 @@
             <fetchPlan extends="_base"/>
             <loader/>
         </instance>
+        <collection id="enrolmentsDc" class="com.company.ims.entity.Enrolment">
+            <fetchPlan extends="_base">
+                <property name="intakeModule" fetchPlan="_base">
+                    <property name="module" fetchPlan="_base"/>
+                    <property name="intake" fetchPlan="_base"/>
+                </property>
+                <property name="classroom" fetchPlan="_base">
+                    <property name="batch" fetchPlan="_base"/>
+                </property>
+            </fetchPlan>
+            <loader id="enrolmentsDl">
+                <query>
+                    <![CDATA[select e from Enrolment e
+                    where e.student = :student  ]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -23,10 +40,8 @@
                 icon="EDITOR_CANCEL"/>
     </actions>
     <dialogMode height="AUTO"
-                width="AUTO"
-                modal="true"
-                forceDialog="true"/>
-    <layout spacing="true" expand="editActions">
+                width="AUTO"/>
+    <layout spacing="true" expand="enrolmentsTable">
         <form id="form" dataContainer="studentDc">
             <column width="350px">
                 <textField id="usernameField" property="username"/>
@@ -42,11 +57,28 @@
                 <textField id="lastNameField" property="lastName"/>
                 <textField id="emailField" property="email"/>
                 <checkBox id="activeField" property="active"/>
-                <textField id="timeZoneIdField" property="timeZoneId"/>
                 <textField id="studentIdField" property="studentId"/>
                 <textField id="addressField" property="address"/>
             </column>
         </form>
+        <groupTable id="enrolmentsTable" width="100%" dataContainer="enrolmentsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <buttonsPanel alwaysVisible="true">
+                <button id="enrolmentsTableCreateBtn" action="enrolmentsTable.create"/>
+                <button id="enrolmentsTableEditBtn" action="enrolmentsTable.edit"/>
+                <button id="enrolmentsTableRemoveBtn" action="enrolmentsTable.remove"/>
+            </buttonsPanel>
+            <columns>
+                <column id="intakeModule.module"/>
+                <column id="intakeModule.intake"/>
+                <column id="classroom.batch"/>
+                <column id="classroom"/>
+            </columns>
+        </groupTable>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>

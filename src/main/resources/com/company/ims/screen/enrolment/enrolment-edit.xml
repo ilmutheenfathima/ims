@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://enrolmentEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="enrolmentDc"
+                  class="com.company.ims.entity.Enrolment">
+            <fetchPlan extends="_base">
+                <property name="student" fetchPlan="_base"/>
+                <property name="intakeModule" fetchPlan="_base">
+                    <property name="module" fetchPlan="_base"/>
+                </property>
+                <property name="classroom" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+        <collection id="coursesDc" class="com.company.ims.entity.Course">
+            <fetchPlan extends="_base"/>
+            <loader id="coursesDl">
+                <query>
+                    <![CDATA[select e from Course e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="levelsDc" class="com.company.ims.entity.Level">
+            <fetchPlan extends="_base"/>
+            <loader id="levelsDl">
+                <query>
+                    <![CDATA[select e from Level_ e
+                    where e.course = :course  ]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="intakesDc" class="com.company.ims.entity.Intake">
+            <fetchPlan extends="_base"/>
+            <loader id="intakesDl">
+                <query>
+                    <![CDATA[select e from Intake e
+                    where e.level = :level  ]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="batchesDc" class="com.company.ims.entity.Batch">
+            <fetchPlan extends="_base"/>
+            <loader id="batchesDl">
+                <query>
+                    <![CDATA[select e from Batch e
+                    where e.intake = :intake  ]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="intakeModulesDc" class="com.company.ims.entity.IntakeModule">
+            <fetchPlan extends="_base"/>
+            <loader id="intakeModulesDl">
+                <query>
+                    <![CDATA[select e from IntakeModule e
+                    where e.intake = :intake  ]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="classroomsDc" class="com.company.ims.entity.Classroom">
+            <fetchPlan extends="_base"/>
+            <loader id="classroomsDl">
+                <query>
+                    <![CDATA[select e from Classroom e
+                    where e.intakeModule = :intakeModule  ]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout spacing="true" expand="editActions">
+        <entityComboBox id="courseSelection" optionsContainer="coursesDc"
+                        caption="msg://courseSelection.caption"/>
+        <entityComboBox enable="false" id="levelSelection" optionsContainer="levelsDc"
+                        caption="msg://levelSelection.caption"/>
+        <entityComboBox enable="false" id="intakeSelection" optionsContainer="intakesDc"
+                        caption="msg://intakeSelection.caption"/>
+        <entityComboBox enable="false" id="intakeModuleSelection" optionsContainer="intakeModulesDc"
+                        caption="msg://intakeModuleSelection.caption"/>
+        <entityComboBox enable="false" id="classroomSelection" optionsContainer="classroomsDc"
+                        caption="msg://classroomSelection.caption"/>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
