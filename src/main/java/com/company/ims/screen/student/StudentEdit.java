@@ -88,7 +88,11 @@ public class StudentEdit extends StandardEditor<Student> {
     public void onPostCommit(DataContext.PostCommitEvent event) {
         if (isNewEntity) {
             userRepository.addResourceRoleToUser(getEditedEntity(), StudentRole.CODE); // set student role
-            getApplicationContext().publishEvent(new SingleUserPasswordChangeEvent(getEditedEntity().getUsername(), passwordField.getValue()));
+            getApplicationContext().publishEvent(
+                    new SingleUserPasswordChangeEvent(getEditedEntity().getUsername(),
+                            passwordField.getValue()
+                    )
+            );
         }
     }
 
