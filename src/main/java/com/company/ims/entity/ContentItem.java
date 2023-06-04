@@ -1,6 +1,7 @@
 package com.company.ims.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
@@ -34,10 +35,22 @@ public class ContentItem {
     private ModuleContent content;
 
     @JoinTable(name = "CONTENT_ITEM_CLASSROOM_LINK",
-            joinColumns = @JoinColumn(name = "CONTENT_ITEM_ID"),
-            inverseJoinColumns = @JoinColumn(name = "CLASSROOM_ID"))
+            joinColumns = @JoinColumn(name = "CONTENT_ITEM_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "CLASSROOM_ID", referencedColumnName = "ID"))
     @ManyToMany
     private List<Classroom> visibleClassrooms;
+
+    @Composition
+    @OneToMany(mappedBy = "contentItem")
+    private List<ItemResource> resources;
+
+    public List<ItemResource> getResources() {
+        return resources;
+    }
+
+    public void setResources(List<ItemResource> resources) {
+        this.resources = resources;
+    }
 
     public List<Classroom> getVisibleClassrooms() {
         return visibleClassrooms;

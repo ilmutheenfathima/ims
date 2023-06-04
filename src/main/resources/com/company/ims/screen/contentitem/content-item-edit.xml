@@ -7,9 +7,11 @@
                   class="com.company.ims.entity.ContentItem">
             <fetchPlan extends="_base">
                 <property name="visibleClassrooms" fetchPlan="_base"/>
+                <property name="resources" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
             <collection id="visibleClassroomsDc" property="visibleClassrooms"/>
+            <collection id="resourcesDc" property="resources"/>
         </instance>
     </data>
     <facets>
@@ -51,6 +53,23 @@
                 <buttonsPanel>
                     <button action="visibleClassroomsTable.add"/>
                     <button action="visibleClassroomsTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox width="100%" id="resourcesBox" caption="msg://com.company.ims.entity/ContentItem.resources">
+            <table id="resourcesTable" dataContainer="resourcesDc" width="100%" height="100%">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns >
+                    <column width="200" id="file"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="resourcesTable.create"/>
+                    <button action="resourcesTable.edit"/>
+                    <button action="resourcesTable.remove"/>
                 </buttonsPanel>
             </table>
         </groupBox>

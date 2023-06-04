@@ -28,14 +28,14 @@
     <item screen="CalendarScreen" id="CalendarScreen"
           caption="msg://com.company.ims.screen.calendar/calendarScreen.caption" icon="font-icon:CALENDAR"/>
 
-    <item screen="StudentHomeScreen" id="StudentHomeScreen"
-          caption="msg://com.company.ims.screen.studenthome/studentHomeScreen.caption" icon="font-icon:NEWSPAPER_O"/>
+<!--    <item screen="StudentHomeScreen" id="StudentHomeScreen"-->
+<!--          caption="msg://com.company.ims.screen.studenthome/studentHomeScreen.caption" icon="font-icon:NEWSPAPER_O"/>-->
 
-    <item screen="LecturerHomeScreen" id="LecturerHomeScreen"
-          caption="msg://com.company.ims.screen.lecturerhome/lecturerHomeScreen.caption" icon="font-icon:NEWSPAPER_O"/>
+<!--    <item screen="LecturerHomeScreen" id="LecturerHomeScreen"-->
+<!--          caption="msg://com.company.ims.screen.lecturerhome/lecturerHomeScreen.caption" icon="font-icon:NEWSPAPER_O"/>-->
 
-    <item screen="CashierHomeScreen" id="CashierHomeScreen"
-          caption="msg://com.company.ims.screen.cashierhome/cashierHomeScreen.caption" icon="font-icon:MONEY"/>
+<!--    <item screen="CashierHomeScreen" id="CashierHomeScreen"-->
+<!--          caption="msg://com.company.ims.screen.cashierhome/cashierHomeScreen.caption" icon="font-icon:MONEY"/>-->
 
     <menu id="usersMenu" caption="msg://com.company.ims/menu.users" icon="font-icon:USERS"
           insertBefore="administration">

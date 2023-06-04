@@ -16,6 +16,7 @@
             </hbox>
             <label id="description"
                    align="MIDDLE_CENTER"/>
+            <hbox spacing="true" align="MIDDLE_CENTER" id="resourcesBox" margin="false,false,true,false"/>
         </vbox>
     </layout>
 </fragment>

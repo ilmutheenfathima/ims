@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="ims">
+        <createTable tableName="ITEM_RESOURCE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ITEM_RESOURCE"/>
+            </column>
+            <column name="FILE_" type="VARCHAR(1024)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CONTENT_ITEM_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="ims">
+        <createTable tableName="SUBMISSION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SUBMISSION"/>
+            </column>
+            <column name="TEXT" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FILE_" type="VARCHAR(1024)"/>
+            <column name="MARKS" type="FLOAT"/>
+            <column name="STUDENT_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CONTENT_ITEM_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="ims">
+        <createIndex indexName="IDX_ITEM_RESOURCE_CONTENT_ITEM" tableName="ITEM_RESOURCE">
+            <column name="CONTENT_ITEM_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="CONTENT_ITEM_ID" baseTableName="ITEM_RESOURCE"
+                                 constraintName="FK_ITEMRESOURCE_ON_CONTENTITEM" referencedColumnNames="ID"
+                                 referencedTableName="CONTENT_ITEM"/>
+    </changeSet>
+    <changeSet id="4" author="ims">
+        <createIndex indexName="IDX_SUBMISSION_CONTENT_ITEM" tableName="SUBMISSION">
+            <column name="CONTENT_ITEM_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="CONTENT_ITEM_ID" baseTableName="SUBMISSION"
+                                 constraintName="FK_SUBMISSION_ON_CONTENT_ITEM" referencedColumnNames="ID"
+                                 referencedTableName="CONTENT_ITEM"/>
+    </changeSet>
+    <changeSet id="5" author="ims">
+        <createIndex indexName="IDX_SUBMISSION_STUDENT" tableName="SUBMISSION">
+            <column name="STUDENT_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="STUDENT_ID" baseTableName="SUBMISSION"
+                                 constraintName="FK_SUBMISSION_ON_STUDENT" referencedColumnNames="ID"
+                                 referencedTableName="USER_"/>
+    </changeSet>
+</databaseChangeLog>

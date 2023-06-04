@@ -21,5 +21,6 @@
     <fetchPlan entity="ContentItem" name="contentItem-fetch-plan-for-items-page" extends="_base">
         <property name="content" fetchPlan="_base"/>
         <property name="visibleClassrooms" fetchPlan="_base"/>
+        <property name="resources"/>
     </fetchPlan>
 </fetchPlans>
