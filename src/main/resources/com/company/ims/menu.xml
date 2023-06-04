@@ -7,8 +7,6 @@
               caption="msg://com.company.ims.screen.course/courseBrowse.menu" icon="font-icon:BOOK"/>
         <item screen="Level_.browse" caption="msg://com.company.ims.screen.level/levelBrowse.menu"
               icon="font-icon:LIST"/>
-        <item screen="Enrolment.browse" caption="msg://com.company.ims.screen.enrolment/enrolmentBrowse.menu"/>
-        <item screen="Payment.browse" caption="msg://com.company.ims.screen.payment/paymentBrowse.menu"/>
     </menu>
 
     <menu id="intakeMenu" caption="msg://com.company.ims/menu.intakes" icon="font-icon:OBJECT_GROUP"
