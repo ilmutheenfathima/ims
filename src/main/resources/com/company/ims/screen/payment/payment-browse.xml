@@ -40,10 +40,10 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="paymentsTable" spacing="false">
-        <filter id="filter"
-                dataLoader="paymentsDl">
-            <properties include=".*"/>
-        </filter>
+<!--        <filter id="filter"-->
+<!--                dataLoader="paymentsDl">-->
+<!--            <properties include=".*"/>-->
+<!--        </filter>-->
         <label stylename="bold" id="moduleFeeLabel"/>
         <label stylename="bold" id="modulePaymentOptionLabel"/>
         <groupTable id="paymentsTable"

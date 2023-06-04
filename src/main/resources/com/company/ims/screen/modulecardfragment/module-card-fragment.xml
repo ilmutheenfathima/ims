@@ -19,6 +19,7 @@
                 <label id="level" stylename="module-card-breadcrumb"/>
                 <label id="intake" stylename="module-card-breadcrumb"/>
             </hbox>
+            <buttonsPanel visible="false" id="classroomBtnPanel" spacing="true"/>
             <label id="description"
                    align="MIDDLE_CENTER"/>
             <button caption="View"

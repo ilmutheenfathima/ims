@@ -13,5 +13,8 @@
                 <property name="course" fetchPlan="_base"/>
             </property>
         </property>
+        <property name="classrooms">
+            <property name="lecturer"/>
+        </property>
     </fetchPlan>
 </fetchPlans>
