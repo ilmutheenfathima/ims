@@ -3,9 +3,25 @@
 @mixin ims_theme {
   @include helium;
 
+  --menubar-background-color: #4866CF;
+  --menubar-border-color: #4866CF;
+
+    /* Basic */
+  --primary-color: #4866CF;
+  --primary-color_rgb: 72, 102, 207;
+
+    /* Common */
+  --primary-color-shade-1: #004C95;
+  --primary-color-shade-2: #004484;
+  --primary-dim-color: #C6D1EC;
+
+    /* Button */
+  --button-primary-focused-border-color: #C6D1EC;
+
   .app-title-name {
     font-size: 25px !important;
     font-weight: bolder !important;
     color: white !important;
   }
+
 }

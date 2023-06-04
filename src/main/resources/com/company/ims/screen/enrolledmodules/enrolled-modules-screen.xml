@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://enrolledModulesScreen.caption">
+    <layout expand="cardContainer">
+        <scrollBox id="cardContainer"
+                   width="100%" align="MIDDLE_CENTER" spacing="true">
+        </scrollBox>
+    </layout>
+</window>

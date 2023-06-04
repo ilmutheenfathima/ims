@@ -20,14 +20,10 @@
           caption="msg://com.company.ims.screen.student/studentBrowse.menu" icon="font-icon:PENCIL"/>
     <item screen="Lecturer.browse"
           caption="msg://com.company.ims.screen.lecturer/lecturerBrowse.menu" icon="font-icon:MORTAR_BOARD"/>
-    <menu id="usersMenu" caption="msg://com.company.ims/menu.users" icon="font-icon:USERS"
-          insertBefore="administration">
-        <item screen="Cashier.browse"
-              caption="msg://com.company.ims.screen.cashier/cashierBrowse.menu" icon="font-icon:MONEY"/>
-        <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption"
-              icon="font-icon:USER"/>
-    </menu>
     <item screen="Enrolment.screen" caption="msg://com.company.ims.screen.classroom/enrolmentScreen.menu"  icon="font-icon:SHOPPING_BAG"/>
+
+    <item screen="EnrolledModulesScreen" icon="font-icon:CREDIT_CARD"
+          caption="msg://com.company.ims.screen.enrolledmodules/enrolledModulesScreen.caption"/>
 
     <item screen="CalendarScreen" id="CalendarScreen"
           caption="msg://com.company.ims.screen.calendar/calendarScreen.caption" icon="font-icon:CALENDAR"/>
@@ -40,5 +36,13 @@
 
     <item screen="CashierHomeScreen" id="CashierHomeScreen"
           caption="msg://com.company.ims.screen.cashierhome/cashierHomeScreen.caption" icon="font-icon:MONEY"/>
+
+    <menu id="usersMenu" caption="msg://com.company.ims/menu.users" icon="font-icon:USERS"
+          insertBefore="administration">
+        <item screen="Cashier.browse"
+              caption="msg://com.company.ims.screen.cashier/cashierBrowse.menu" icon="font-icon:MONEY"/>
+        <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption"
+              icon="font-icon:USER"/>
+    </menu>
 
 </menu-config>

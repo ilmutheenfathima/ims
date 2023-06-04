@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <layout width="100%">
+        <vbox stylename="well"
+              height="200px"
+              width="500px"
+              expand="description"
+              spacing="true"
+              align="MIDDLE_CENTER">
+            <hbox stylename="v-panel-caption"
+                  width="100%">
+                <label id="title" stylename="h2"/>
+            </hbox>
+            <label id="description"
+                   align="MIDDLE_CENTER"/>
+            <button caption="View"
+                    width="100%"/>
+        </vbox>
+    </layout>
+</fragment>

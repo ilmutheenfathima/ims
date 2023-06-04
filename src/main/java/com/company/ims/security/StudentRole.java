@@ -17,8 +17,8 @@ public interface StudentRole extends UiMinimalRole {
 
     String CODE = "student-role";
 
-    @MenuPolicy(menuIds = {"StudentHomeScreen", "CalendarScreen"})
-    @ScreenPolicy(screenIds = {"StudentHomeScreen", "ChangePasswordDialog", "Student.edit", "themeSettingsScreen", "CalendarScreen"})
+    @MenuPolicy(menuIds = {"StudentHomeScreen", "CalendarScreen","EnrolledModulesScreen"})
+    @ScreenPolicy(screenIds = {"StudentHomeScreen", "ChangePasswordDialog", "Student.edit", "themeSettingsScreen", "CalendarScreen", "EnrolledModulesScreen"})
     @EntityPolicy(entityName = "*", actions = {EntityPolicyAction.ALL})
     @EntityAttributePolicy(entityName = "*", attributes = "*", action = EntityAttributePolicyAction.MODIFY)
     void screens();
