@@ -27,4 +27,12 @@
         <property name="content" fetchPlan="_base"/>
         <property name="resources" fetchPlan="_base"/>
     </fetchPlan>
+    <fetchPlan entity="Enrolment" name="enrolment-fetch-plan" extends="_base">
+        <property name="student" fetchPlan="_base"/>
+        <property name="intakeModule" fetchPlan="_base">
+            <property name="module" fetchPlan="_base"/>
+            <property name="moduleContent" fetchPlan="_base"/>
+        </property>
+        <property name="payments" fetchPlan="_base"/>
+    </fetchPlan>
 </fetchPlans>

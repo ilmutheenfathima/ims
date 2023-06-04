@@ -1,13 +1,13 @@
 package com.company.ims.screen.modulecardfragment;
 
-import com.company.ims.entity.Classroom;
-import com.company.ims.entity.IntakeModule;
-import com.company.ims.entity.ModuleContent;
-import com.company.ims.entity.User;
+import com.company.ims.entity.*;
 import com.company.ims.screen.enrolment.EnrolmentBrowse;
 import com.company.ims.screen.modulecontent.ModuleContentEdit;
 import com.company.ims.screen.modulepage.ModulePage;
+import com.company.ims.screen.payment.PaymentBrowse;
 import io.jmix.core.DataManager;
+import io.jmix.core.querycondition.LogicalCondition;
+import io.jmix.core.querycondition.PropertyCondition;
 import io.jmix.ui.ScreenBuilders;
 import io.jmix.ui.UiComponents;
 import io.jmix.ui.component.Button;
@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @UiController("ModuleCardFragment")
@@ -47,6 +48,8 @@ public class ModuleCardFragment extends ScreenFragment {
     private VBoxLayout classroomBtnPanel;
     @Autowired
     private UiComponents uiComponents;
+    @Autowired
+    private Button showPayments;
 
     @Subscribe
     public void onInit(InitEvent event) {
@@ -69,6 +72,7 @@ public class ModuleCardFragment extends ScreenFragment {
     private void renderClassrooms() {
         if (user.isStudent()) {
             classroomBtnPanel.setVisible(false);
+            showPayments.setVisible(true);
             return;
         }
 
@@ -138,5 +142,26 @@ public class ModuleCardFragment extends ScreenFragment {
         modulePage.setIntakeModule(intakeModule);
         modulePage.setUser(user);
         modulePage.show();
+    }
+
+    @Subscribe("showPayments")
+    public void onShowPaymentsClick(Button.ClickEvent event) {
+        Optional<Enrolment> enrolment = dataManager.load(Enrolment.class)
+                .condition(
+                        LogicalCondition.and(
+                                PropertyCondition.equal("intakeModule", intakeModule),
+                                PropertyCondition.equal("student", user)
+                        )
+                )
+                .fetchPlan("enrolment-fetch-plan")
+                .optional();
+        if (enrolment.isPresent()) {
+            PaymentBrowse paymentBrowse = screenBuilders.screen(this)
+                    .withScreenClass(PaymentBrowse.class)
+                    .withOpenMode(OpenMode.THIS_TAB)
+                    .build();
+            paymentBrowse.setEnrolment(enrolment.get());
+            paymentBrowse.show();
+        }
     }
 }

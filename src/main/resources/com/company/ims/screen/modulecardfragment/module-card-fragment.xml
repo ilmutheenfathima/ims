@@ -13,6 +13,9 @@
                 <button visible="false" id="editBtn" align="MIDDLE_RIGHT"
                         icon="font-icon:EDIT"
                         stylename="borderless-colored"/>
+                <button visible="false" id="showPayments" align="MIDDLE_RIGHT"
+                        icon="font-icon:MONEY"
+                        stylename="borderless-colored"/>
             </hbox>
             <hbox spacing="false" align="TOP_LEFT" margin="false,false,false,true">
                 <label id="course" stylename="module-card-breadcrumb"/>
