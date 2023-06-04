@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://moduleContentEdit.caption"
+        caption="msg://submissionEdit.caption"
         focusComponent="form">
     <data>
-        <instance id="moduleContentDc"
-                  class="com.company.ims.entity.ModuleContent">
-            <fetchPlan extends="_base"/>
+        <instance id="submissionDc"
+                  class="com.company.ims.entity.Submission">
+            <fetchPlan extends="_base">
+                <property name="student" fetchPlan="_base"/>
+                <property name="contentItem" fetchPlan="_base"/>
+            </fetchPlan>
             <loader/>
         </instance>
     </data>
@@ -27,12 +30,11 @@
                 modal="true"
                 forceDialog="true"/>
     <layout spacing="true" expand="editActions">
-        <form id="form" dataContainer="moduleContentDc">
+        <form id="form" dataContainer="submissionDc">
             <column width="350px">
-                <!--                <textField id="titleField" property="title"/>-->
-                <textArea id="descriptionField" property="description" rows="5"/>
-                <textField id="moduleFeeField" property="moduleFee"/>
-                <textArea id="paymentOptionsField" property="paymentOptions" rows="5"/>
+                <textArea id="textField" property="text" rows="5"/>
+                <fileStorageUpload id="fileField" property="file"/>
+                <textField id="marksField" property="marks"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

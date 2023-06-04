@@ -135,7 +135,7 @@ public class Enrolment {
         this.id = id;
     }
 
-    public String getIdentifiableName(){
+    public String getIdentifiableName() {
         return "Student: " + student.getStudentId() + " - " + student.getFullName() + " enrolment for Class: " + classroom;
     }
 }

@@ -175,7 +175,7 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
     @Subscribe("userImage")
     public void onUserImageClick(Image.ClickEvent event) {
         User user = (User) currentAuthentication.getUser();
-        UserEdit userEditor = (UserEdit) screenBuilders.editor(User.class, this)
+        UserEdit userEditor = screenBuilders.editor(User.class, this)
                 .editEntity(user)
                 .withScreenClass(UserEdit.class)
                 .withOpenMode(OpenMode.DIALOG)

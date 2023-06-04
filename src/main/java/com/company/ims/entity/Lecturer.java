@@ -28,12 +28,12 @@ public class Lecturer extends User {
         this.classrooms = classrooms;
     }
 
-    public void setLecturerId(String lecturerId) {
-        this.lecturerId = lecturerId;
-    }
-
     public String getLecturerId() {
         return lecturerId;
+    }
+
+    public void setLecturerId(String lecturerId) {
+        this.lecturerId = lecturerId;
     }
 
     public String getAddress() {

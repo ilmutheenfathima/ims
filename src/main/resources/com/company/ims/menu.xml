@@ -7,6 +7,7 @@
               caption="msg://com.company.ims.screen.course/courseBrowse.menu" icon="font-icon:BOOK"/>
         <item screen="Level_.browse" caption="msg://com.company.ims.screen.level/levelBrowse.menu"
               icon="font-icon:LIST"/>
+        <item screen="Submission.browse" caption="msg://com.company.ims.screen.submission/submissionBrowse.menu"/>
     </menu>
 
     <menu id="intakeMenu" caption="msg://com.company.ims/menu.intakes" icon="font-icon:OBJECT_GROUP"
@@ -20,7 +21,8 @@
           caption="msg://com.company.ims.screen.student/studentBrowse.menu" icon="font-icon:PENCIL"/>
     <item screen="Lecturer.browse"
           caption="msg://com.company.ims.screen.lecturer/lecturerBrowse.menu" icon="font-icon:MORTAR_BOARD"/>
-    <item screen="Enrolment.screen" caption="msg://com.company.ims.screen.classroom/enrolmentScreen.menu"  icon="font-icon:SHOPPING_BAG"/>
+    <item screen="Enrolment.screen" caption="msg://com.company.ims.screen.classroom/enrolmentScreen.menu"
+          icon="font-icon:SHOPPING_BAG"/>
 
     <item screen="EnrolledModulesScreen" icon="font-icon:CREDIT_CARD"
           caption="msg://com.company.ims.screen.enrolledmodules/enrolledModulesScreen.caption"/>
@@ -28,14 +30,14 @@
     <item screen="CalendarScreen" id="CalendarScreen"
           caption="msg://com.company.ims.screen.calendar/calendarScreen.caption" icon="font-icon:CALENDAR"/>
 
-<!--    <item screen="StudentHomeScreen" id="StudentHomeScreen"-->
-<!--          caption="msg://com.company.ims.screen.studenthome/studentHomeScreen.caption" icon="font-icon:NEWSPAPER_O"/>-->
+    <!--    <item screen="StudentHomeScreen" id="StudentHomeScreen"-->
+    <!--          caption="msg://com.company.ims.screen.studenthome/studentHomeScreen.caption" icon="font-icon:NEWSPAPER_O"/>-->
 
-<!--    <item screen="LecturerHomeScreen" id="LecturerHomeScreen"-->
-<!--          caption="msg://com.company.ims.screen.lecturerhome/lecturerHomeScreen.caption" icon="font-icon:NEWSPAPER_O"/>-->
+    <!--    <item screen="LecturerHomeScreen" id="LecturerHomeScreen"-->
+    <!--          caption="msg://com.company.ims.screen.lecturerhome/lecturerHomeScreen.caption" icon="font-icon:NEWSPAPER_O"/>-->
 
-<!--    <item screen="CashierHomeScreen" id="CashierHomeScreen"-->
-<!--          caption="msg://com.company.ims.screen.cashierhome/cashierHomeScreen.caption" icon="font-icon:MONEY"/>-->
+    <!--    <item screen="CashierHomeScreen" id="CashierHomeScreen"-->
+    <!--          caption="msg://com.company.ims.screen.cashierhome/cashierHomeScreen.caption" icon="font-icon:MONEY"/>-->
 
     <menu id="usersMenu" caption="msg://com.company.ims/menu.users" icon="font-icon:USERS"
           insertBefore="administration">

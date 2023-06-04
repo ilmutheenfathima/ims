@@ -63,7 +63,8 @@
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
-                <entityComboBox id="intakeModuleField" property="intakeModule" optionsContainer="intakeModulesDc" required="true" nullOptionVisible="false"/>
+                <entityComboBox id="intakeModuleField" property="intakeModule" optionsContainer="intakeModulesDc"
+                                required="true" nullOptionVisible="false"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

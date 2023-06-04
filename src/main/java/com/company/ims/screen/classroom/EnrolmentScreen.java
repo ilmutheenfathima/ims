@@ -50,7 +50,7 @@ public class EnrolmentScreen extends StandardLookup<Classroom> {
         return linkButton;
     }
 
-    private String getEnrolmentCount(Classroom classroom){
+    private String getEnrolmentCount(Classroom classroom) {
         return classroom.getEnrolments().size() + " Enrolments";
     }
 }

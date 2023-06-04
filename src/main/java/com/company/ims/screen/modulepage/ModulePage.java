@@ -34,7 +34,6 @@ public class ModulePage extends Screen {
     @Autowired
     private Button createBtn;
 
-
     public void setIntakeModule(IntakeModule intakeModule) {
         this.intakeModule = intakeModule;
     }
@@ -84,7 +83,6 @@ public class ModulePage extends Screen {
 
     @Subscribe("createBtn")
     public void onCreateBtnClick(Button.ClickEvent event) {
-        // create content item box
         ContentItem contentItem = dataManager.create(ContentItem.class);
         contentItem.setContent(intakeModule.getModuleContent());
         ContentItemEdit moduleContentEdit = screenBuilders.editor(ContentItem.class, this).withScreenClass(ContentItemEdit.class).withOpenMode(OpenMode.DIALOG).editEntity(contentItem).withAfterCloseListener(closeEvent -> {

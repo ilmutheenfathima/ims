@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 @UiController("ModuleCardFragment")
 @UiDescriptor("module-card-fragment.xml")
 public class ModuleCardFragment extends ScreenFragment {
-
     private IntakeModule intakeModule;
     private User user;
     @Autowired

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
         caption="msg://levelBrowse.caption"
         focusComponent="levelsTable">
     <data readOnly="true">
@@ -33,10 +32,10 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="levelsTable" spacing="true">
-<!--        <filter id="filter"-->
-<!--                dataLoader="levelsDl">-->
-<!--            <properties include=".*"/>-->
-<!--        </filter>-->
+        <!--        <filter id="filter"-->
+        <!--                dataLoader="levelsDl">-->
+        <!--            <properties include=".*"/>-->
+        <!--        </filter>-->
         <groupTable id="levelsTable"
                     width="100%"
                     dataContainer="levelsDc">

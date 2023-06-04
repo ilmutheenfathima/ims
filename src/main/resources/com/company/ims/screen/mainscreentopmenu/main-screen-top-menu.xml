@@ -48,17 +48,17 @@
         <cssLayout id="horizontalWrap"
                    stylename="jmix-drawer-layout">
             <drawer id="drawer" expandOnHover="true">
-<!--                <cssLayout id="appTitleBox"-->
-<!--                           stylename="jmix-drawer-header"-->
-<!--                           width="100%">-->
-<!--                    <image id="logoImage2"-->
-<!--                           stylename="app-icon"-->
-<!--                           scaleMode="SCALE_DOWN">-->
-<!--                        <resource>-->
-<!--                            <theme path="branding/app-icon-menu.png"/>-->
-<!--                        </resource>-->
-<!--                    </image>-->
-<!--                </cssLayout>-->
+                <!--                <cssLayout id="appTitleBox"-->
+                <!--                           stylename="jmix-drawer-header"-->
+                <!--                           width="100%">-->
+                <!--                    <image id="logoImage2"-->
+                <!--                           stylename="app-icon"-->
+                <!--                           scaleMode="SCALE_DOWN">-->
+                <!--                        <resource>-->
+                <!--                            <theme path="branding/app-icon-menu.png"/>-->
+                <!--                        </resource>-->
+                <!--                    </image>-->
+                <!--                </cssLayout>-->
                 <sideMenu id="sideMenu"
                           width="100%"
                           stylename="jmix-drawer-content"/>

@@ -29,12 +29,12 @@ public class Student extends User {
         this.enrolments = enrolments;
     }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
-
     public String getStudentId() {
         return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
     public String getAddress() {

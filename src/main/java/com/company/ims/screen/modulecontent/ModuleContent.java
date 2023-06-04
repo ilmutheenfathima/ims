@@ -39,7 +39,6 @@ public class ModuleContent extends ScreenFragment {
     }
 
 
-
     private void renderComponent() {
         title.setValue(intakeModule.getModuleName());
         description.setValue(intakeModule.getModuleContent().getDescription());

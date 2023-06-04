@@ -53,11 +53,11 @@ public class EnrolledModulesScreen extends Screen {
                     .fetchPlan("intakeModule-fetch-plan-for-module-page")
                     .list();
         } else if (user instanceof Student) {
-            String studentQuery = "select distinct e from IntakeModule e \n" +
-                    "                    join e.classrooms.enrolments en \n" +
-                    "                    where e.classrooms.enrolments.student = :classroomsEnrolmentsStudent  ";
+            query = "select e from IntakeModule e \n" +
+                    "                    join e.enrolments en \n" +
+                    "                    where en.student = :enrolledStudent";
             return dataManager.load(IntakeModule.class).query(query)
-                    .parameter("classroomsEnrolmentsStudent", user)
+                    .parameter("enrolledStudent", user)
                     .fetchPlan("intakeModule-fetch-plan-for-module-page")
                     .list();
         } else {

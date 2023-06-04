@@ -12,14 +12,6 @@ public class UnifiedCalendarEvent extends SimpleCalendarEvent<LocalDateTime> {
     @JmixId
     private UUID id;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
     public static UnifiedCalendarEvent getEvent(Classroom classroom, LocalDateTime startTime, LocalDateTime endTime) {
         UnifiedCalendarEvent event = new UnifiedCalendarEvent();
         event.setStart(startTime);
@@ -28,5 +20,13 @@ public class UnifiedCalendarEvent extends SimpleCalendarEvent<LocalDateTime> {
         event.setDescription(classroom.getLecturer().getFullName());
         event.setAllDay(false);
         return event;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 }

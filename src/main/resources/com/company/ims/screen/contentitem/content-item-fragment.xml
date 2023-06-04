@@ -16,7 +16,24 @@
             </hbox>
             <label id="description"
                    align="MIDDLE_CENTER"/>
-            <hbox spacing="true" align="MIDDLE_CENTER" id="resourcesBox" margin="false,false,true,false"/>
+            <hbox id="resourcesBox">
+                <label id="resourceLable" value="msg://resourceLable.value"/>
+                <hbox spacing="true" align="MIDDLE_CENTER" id="resourcesBoxFiles" margin="false,false,true,false"/>
+            </hbox>
+            <vbox visible="false" spacing="true" align="MIDDLE_CENTER" id="submissionsBox"
+                  margin="true">
+                <label id="submissionsLabel" value="msg://submissionsLabel.value"/>
+                <buttonsPanel id="buttonsPanel"
+                              alwaysVisible="true">
+                    <button primary="true" id="submissionCreateBtn" caption="msg://submissionCreateBtn.caption"/>
+                    <button primary="true" id="submissionEditBtn" caption="msg://submissionEditBtn.caption"/>
+                    <button stylename="danger" id="submissionRemoveBtn" caption="msg://submissionRemoveBtn.caption"/>
+                </buttonsPanel>
+                <label id="submissionText"/>
+                <linkButton id="submissionFileBtn"/>
+                <label visible="false" id="marksLabel"/>
+            </vbox>
+            <button visible="false" primary="true" id="evaluationBtn" caption="msg://evaluationBtn.caption"/>
         </vbox>
     </layout>
 </fragment>

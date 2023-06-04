@@ -1,14 +1,13 @@
 package com.company.ims.screen.batch;
 
+import com.company.ims.entity.Batch;
 import com.company.ims.screen.classroom.ClassroomBrowse;
-import com.company.ims.screen.module.ModuleBrowse;
 import io.jmix.ui.ScreenBuilders;
 import io.jmix.ui.UiComponents;
 import io.jmix.ui.component.Component;
 import io.jmix.ui.component.LinkButton;
 import io.jmix.ui.navigation.Route;
 import io.jmix.ui.screen.*;
-import com.company.ims.entity.Batch;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Route("batches")

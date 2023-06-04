@@ -38,6 +38,17 @@ public class IntakeModule {
     @OneToOne(fetch = FetchType.LAZY)
     private ModuleContent moduleContent;
 
+    @OneToMany(mappedBy = "intakeModule")
+    private List<Enrolment> enrolments;
+
+    public List<Enrolment> getEnrolments() {
+        return enrolments;
+    }
+
+    public void setEnrolments(List<Enrolment> enrolments) {
+        this.enrolments = enrolments;
+    }
+
     public ModuleContent getModuleContent() {
         return moduleContent;
     }

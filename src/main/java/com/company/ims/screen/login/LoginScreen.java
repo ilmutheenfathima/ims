@@ -26,37 +26,27 @@ import java.util.Locale;
 @Route(path = "login", root = true)
 public class LoginScreen extends Screen {
 
+    private final Logger log = LoggerFactory.getLogger(LoginScreen.class);
     @Autowired
     private TextField<String> usernameField;
-
     @Autowired
     private PasswordField passwordField;
-
     @Autowired
     private CheckBox rememberMeCheckBox;
-
     @Autowired
     private ComboBox<Locale> localesField;
-
     @Autowired
     private Notifications notifications;
-
     @Autowired
     private Messages messages;
-
     @Autowired
     private MessageTools messageTools;
-
     @Autowired
     private LoginScreenSupport loginScreenSupport;
-
     @Autowired
     private UiLoginProperties loginProperties;
-
     @Autowired
     private JmixApp app;
-
-    private final Logger log = LoggerFactory.getLogger(LoginScreen.class);
 
     @Subscribe
     private void onInit(InitEvent event) {

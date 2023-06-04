@@ -18,9 +18,11 @@ public class ModuleBrowse extends StandardLookup<Module> {
     private Level level;
     @Autowired
     private DataManager dataManager;
+
     public void setLevel(Level level) {
         this.level = level;
     }
+
     @Subscribe
     public void onAfterShow(AfterShowEvent event) {
         getWindow().setCaption("Modules of " + level.getLevelLongName());

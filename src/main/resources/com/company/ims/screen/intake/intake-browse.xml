@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
         caption="msg://intakeBrowse.caption"
         focusComponent="intakesTable">
     <data readOnly="true">
@@ -35,10 +34,10 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="intakesTable" spacing="true">
-<!--        <filter id="filter"-->
-<!--                dataLoader="intakesDl">-->
-<!--            <properties include=".*"/>-->
-<!--        </filter>-->
+        <!--        <filter id="filter"-->
+        <!--                dataLoader="intakesDl">-->
+        <!--            <properties include=".*"/>-->
+        <!--        </filter>-->
         <groupTable id="intakesTable"
                     width="100%"
                     dataContainer="intakesDc">

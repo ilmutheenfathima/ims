@@ -31,7 +31,7 @@ public class ClassroomEdit extends StandardEditor<Classroom> {
                 DayOfWeek.FRIDAY.getDisplayName(TextStyle.FULL, Locale.getDefault()),
                 DayOfWeek.SATURDAY.getDisplayName(TextStyle.FULL, Locale.getDefault()),
                 DayOfWeek.SUNDAY.getDisplayName(TextStyle.FULL, Locale.getDefault())
-                );
+        );
         dayField.setOptionsList(daysOfWeek);
     }
 

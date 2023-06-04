@@ -1,9 +1,9 @@
 package com.company.ims.screen.cashier;
 
+import com.company.ims.entity.Cashier;
 import com.company.ims.entity.User;
 import com.company.ims.security.CashierRole;
 import com.company.ims.security.DatabaseUserRepository;
-import com.company.ims.security.LecturerRole;
 import io.jmix.core.EntityStates;
 import io.jmix.core.security.event.SingleUserPasswordChangeEvent;
 import io.jmix.ui.Notifications;
@@ -11,7 +11,6 @@ import io.jmix.ui.component.PasswordField;
 import io.jmix.ui.component.TextField;
 import io.jmix.ui.model.DataContext;
 import io.jmix.ui.screen.*;
-import com.company.ims.entity.Cashier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

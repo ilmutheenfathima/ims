@@ -1,9 +1,6 @@
 package com.company.ims.entity;
 
-import com.company.ims.security.CashierRole;
-import com.company.ims.security.FullAccessRole;
-import com.company.ims.security.LecturerRole;
-import com.company.ims.security.SecurityUtil;
+import com.company.ims.security.*;
 import io.jmix.core.HasTimeZone;
 import io.jmix.core.annotation.Secret;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
@@ -27,48 +24,38 @@ import java.util.UUID;
 })
 public class User implements JmixUserDetails, HasTimeZone {
 
-    @Id
-    @Column(name = "ID", nullable = false)
-    @JmixGeneratedValue
-    private UUID id;
-
-    @Version
-    @Column(name = "VERSION", nullable = false)
-    private Integer version;
-
     @Column(name = "USERNAME", nullable = false)
     protected String username;
-
     @Secret
     @SystemLevel
     @Column(name = "PASSWORD")
     protected String password;
-
     @Column(name = "FIRST_NAME")
     protected String firstName;
-
     @Column(name = "LAST_NAME")
     protected String lastName;
-
     @Email
     @Column(name = "EMAIL")
     protected String email;
-
     @Column(name = "ACTIVE")
     protected Boolean active = true;
-
     @Column(name = "TIME_ZONE_ID")
     protected String timeZoneId;
-
     @Column(name = "DTYPE")
     protected String dtype;
+    @Transient
+    protected Collection<? extends GrantedAuthority> authorities;
+    @Id
+    @Column(name = "ID", nullable = false)
+    @JmixGeneratedValue
+    private UUID id;
+    @Version
+    @Column(name = "VERSION", nullable = false)
+    private Integer version;
 
     public String getDtype() {
         return dtype;
     }
-
-    @Transient
-    protected Collection<? extends GrantedAuthority> authorities;
 
     public UUID getId() {
         return id;
@@ -90,6 +77,10 @@ public class User implements JmixUserDetails, HasTimeZone {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String getUsername() {
         return username;
@@ -105,10 +96,6 @@ public class User implements JmixUserDetails, HasTimeZone {
 
     public void setActive(Boolean active) {
         this.active = active;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
@@ -200,7 +187,7 @@ public class User implements JmixUserDetails, HasTimeZone {
     }
 
     public boolean isStudent() {
-        return SecurityUtil.hasAuthority(authorities, LecturerRole.CODE);
+        return SecurityUtil.hasAuthority(authorities, StudentRole.CODE);
     }
 
     public boolean isCashier() {

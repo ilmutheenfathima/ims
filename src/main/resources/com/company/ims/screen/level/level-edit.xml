@@ -40,13 +40,14 @@
         <form id="form" dataContainer="levelDc">
             <column width="350px">
                 <textField id="nameField" property="name"/>
-                <entityComboBox id="courseField" property="course" optionsContainer="coursesDc" required="true" nullOptionVisible="false"/>
-<!--                <entityPicker id="courseField" property="course">-->
-<!--                    <actions>-->
-<!--                        <action id="entityLookup" type="entity_lookup"/>-->
-<!--                        <action id="entityClear" type="entity_clear"/>-->
-<!--                    </actions>-->
-<!--                </entityPicker>-->
+                <entityComboBox id="courseField" property="course" optionsContainer="coursesDc" required="true"
+                                nullOptionVisible="false"/>
+                <!--                <entityPicker id="courseField" property="course">-->
+                <!--                    <actions>-->
+                <!--                        <action id="entityLookup" type="entity_lookup"/>-->
+                <!--                        <action id="entityClear" type="entity_clear"/>-->
+                <!--                    </actions>-->
+                <!--                </entityPicker>-->
             </column>
         </form>
         <hbox id="editActions" spacing="true">

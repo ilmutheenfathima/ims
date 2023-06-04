@@ -44,7 +44,8 @@
         <form id="form" dataContainer="batchDc">
             <column width="350px">
                 <textField id="nameField" property="name"/>
-                <entityComboBox id="intakeField"  property="intake" optionsContainer="intakesDc" required="true" nullOptionVisible="false"/>
+                <entityComboBox id="intakeField" property="intake" optionsContainer="intakesDc" required="true"
+                                nullOptionVisible="false"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

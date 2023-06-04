@@ -25,7 +25,8 @@ public interface StudentRole extends UiMinimalRole {
             "themeSettingsScreen",
             "CalendarScreen",
             "EnrolledModulesScreen",
-            "ModulePage"
+            "ModulePage",
+            "Submission.edit"
     })
     @EntityPolicy(entityName = "*", actions = {EntityPolicyAction.ALL})
     @EntityAttributePolicy(entityName = "*", attributes = "*", action = EntityAttributePolicyAction.MODIFY)

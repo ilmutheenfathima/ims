@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://moduleBrowse.caption"
-        focusComponent="modulesTable">
+        caption="msg://submissionBrowse.caption"
+        focusComponent="submissionsTable">
     <data readOnly="true">
-        <collection id="modulesDc"
-                    class="com.company.ims.entity.Module">
+        <collection id="submissionsDc"
+                    class="com.company.ims.entity.Submission">
             <fetchPlan extends="_base">
-                <property name="level" fetchPlan="_base">
-                    <property name="course" fetchPlan="_base"/>
-                </property>
+                <property name="student" fetchPlan="_base"/>
+                <property name="contentItem" fetchPlan="_base"/>
             </fetchPlan>
-            <loader id="modulesDl">
+            <loader id="submissionsDl">
                 <query>
-                    <![CDATA[select e from Module_ e
-                    where e.level = :level  ]]>
+                    <![CDATA[select e from Submission e]]>
                 </query>
             </loader>
         </collection>
@@ -33,32 +31,33 @@
                 icon="LOOKUP_CANCEL"/>
     </actions>
     <dialogMode height="600"
-                width="1200"
-                modal="true"
-                forceDialog="true"/>
-    <layout expand="modulesTable" spacing="true">
-        <!--        <filter id="filter"-->
-        <!--                dataLoader="modulesDl">-->
-        <!--            <properties include=".*"/>-->
-        <!--        </filter>-->
-        <groupTable id="modulesTable"
+                width="800"/>
+    <layout expand="submissionsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="submissionsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="submissionsTable"
                     width="100%"
-                    dataContainer="modulesDc">
+                    dataContainer="submissionsDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="code"/>
-                <column id="name"/>
+                <column id="text"/>
+                <column id="file"/>
+                <column id="marks"/>
+                <column id="student"/>
+                <column id="contentItem"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="modulesTable.create"/>
-                <button id="editBtn" action="modulesTable.edit"/>
-                <button id="removeBtn" action="modulesTable.remove"/>
+                <button id="createBtn" action="submissionsTable.create"/>
+                <button id="editBtn" action="submissionsTable.edit"/>
+                <button id="removeBtn" action="submissionsTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

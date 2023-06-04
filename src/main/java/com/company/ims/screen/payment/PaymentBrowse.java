@@ -35,7 +35,7 @@ public class PaymentBrowse extends StandardLookup<Payment> {
     public void onAfterShow(AfterShowEvent event) {
         // getWindow().setCaption("Payments");
         moduleFeeLabel.setValue("Course fee: Rs " + DECIMAL_FORMAT.format(enrolment.getIntakeModule().getModuleContent().getModuleFee()));
-        modulePaymentOptionLabel.setValue("Payment Options: "+enrolment.getIntakeModule().getModuleContent().getPaymentOptions());
+        modulePaymentOptionLabel.setValue("Payment Options: " + enrolment.getIntakeModule().getModuleContent().getPaymentOptions());
         paymentsDl.setParameter("enrolment", enrolment);
         paymentsDl.load();
     }

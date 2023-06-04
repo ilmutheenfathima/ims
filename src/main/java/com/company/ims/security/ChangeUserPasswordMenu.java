@@ -11,8 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.Objects;
 
 @Component("changeUserPasswordMenuBean")
-public class ChangeUserPasswordMenu
-{
+public class ChangeUserPasswordMenu {
     @Autowired
     private ScreenBuilders screenBuilders;
 

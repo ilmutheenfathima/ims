@@ -63,7 +63,7 @@
                     <action id="edit" type="edit"/>
                     <action id="remove" type="remove"/>
                 </actions>
-                <columns >
+                <columns>
                     <column width="200" id="file"/>
                 </columns>
                 <buttonsPanel>

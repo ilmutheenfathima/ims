@@ -3,7 +3,7 @@
         caption="msg://calendarScreen.caption">
     <dialogMode height="600"
                 width="800"/>
-    <layout  height="100%" expand="calendar">
+    <layout height="100%" expand="calendar">
         <hbox spacing="true" height="35px" width="100%">
             <label align="TOP_LEFT" stylename="bold" id="monthLabel"/>
 

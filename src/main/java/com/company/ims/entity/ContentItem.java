@@ -44,6 +44,17 @@ public class ContentItem {
     @OneToMany(mappedBy = "contentItem")
     private List<ItemResource> resources;
 
+    @OneToMany(mappedBy = "contentItem")
+    private List<Submission> submissions;
+
+    public List<Submission> getSubmissions() {
+        return submissions;
+    }
+
+    public void setSubmissions(List<Submission> submissions) {
+        this.submissions = submissions;
+    }
+
     public List<ItemResource> getResources() {
         return resources;
     }

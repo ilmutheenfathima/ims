@@ -49,7 +49,7 @@
             <columns>
                 <column id="module"/>
                 <column id="moduleContent.moduleFee"/>
-<!--                <column id="moduleContent.paymentOptions"/>-->
+                <!--                <column id="moduleContent.paymentOptions"/>-->
                 <column id="details" caption="msg://action.caption"/>
             </columns>
             <simplePagination/>
