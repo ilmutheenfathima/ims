@@ -30,7 +30,7 @@
         <form id="form" dataContainer="moduleContentDc">
             <column width="350px">
 <!--                <textField id="titleField" property="title"/>-->
-<!--                <textArea id="descriptionField" property="description" rows="5"/>-->
+                <textArea id="descriptionField" property="description" rows="5"/>
                 <textField id="moduleFeeField" property="moduleFee"/>
                 <textArea id="paymentOptionsField" property="paymentOptions" rows="5"/>
             </column>

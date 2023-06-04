@@ -33,16 +33,16 @@ public class EnrolledModulesScreen extends Screen {
 
     @Subscribe
     public void onAfterShow(AfterShowEvent event) {
-        List<IntakeModule> intakeModules = loadModulesForUser();
+        User user = (User) currentAuthentication.getUser();
+        List<IntakeModule> intakeModules = loadModulesForUser(user);
         Fragment[] moduleCardFragments = intakeModules.stream()
-                .map(this::createCard)
+                .map(im -> this.createCard(im, user))
                 .map(ModuleCardFragment::getFragment)
                 .toArray(Fragment[]::new);
         cardContainer.add(moduleCardFragments);
     }
 
-    private List<IntakeModule> loadModulesForUser() {
-        User user = (User) currentAuthentication.getUser();
+    private List<IntakeModule> loadModulesForUser(User user) {
         String query = "select distinct e from IntakeModule e";
         if (user instanceof Lecturer) {
             query = "select distinct e from IntakeModule e\n" +
@@ -67,9 +67,10 @@ public class EnrolledModulesScreen extends Screen {
         }
     }
 
-    private ModuleCardFragment createCard(IntakeModule intakeModule) {
+    private ModuleCardFragment createCard(IntakeModule intakeModule, User user) {
         ModuleCardFragment card = fragments.create(this, ModuleCardFragment.class);
         card.setIntakeModule(intakeModule);
+        card.setUser(user);
         return card;
     }
 

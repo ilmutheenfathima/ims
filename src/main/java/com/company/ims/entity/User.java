@@ -1,5 +1,7 @@
 package com.company.ims.entity;
 
+import com.company.ims.security.FullAccessRole;
+import com.company.ims.security.SecurityUtil;
 import io.jmix.core.HasTimeZone;
 import io.jmix.core.annotation.Secret;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
@@ -185,5 +187,9 @@ public class User implements JmixUserDetails, HasTimeZone {
 
     public void setTimeZoneId(String timeZoneId) {
         this.timeZoneId = timeZoneId;
+    }
+
+    public boolean isAdmin() {
+        return SecurityUtil.hasAuthority(authorities, FullAccessRole.CODE);
     }
 }

@@ -8,5 +8,10 @@
     <fetchPlan entity="IntakeModule" name="intakeModule-fetch-plan-for-module-page" extends="_base">
         <property name="module" fetchPlan="_base"/>
         <property name="moduleContent" fetchPlan="_base"/>
+        <property name="intake" fetchPlan="_base">
+            <property name="level" fetchPlan="_base">
+                <property name="course" fetchPlan="_base"/>
+            </property>
+        </property>
     </fetchPlan>
 </fetchPlans>

@@ -3,13 +3,21 @@
     <layout width="100%">
         <vbox stylename="well"
               height="200px"
-              width="500px"
+              width="100%"
               expand="description"
               spacing="true"
               align="MIDDLE_CENTER">
             <hbox stylename="v-panel-caption"
                   width="100%">
                 <label id="title" stylename="h2"/>
+                <button visible="false" id="editBtn" align="MIDDLE_RIGHT"
+                        icon="font-icon:EDIT"
+                        stylename="borderless-colored"/>
+            </hbox>
+            <hbox spacing="false" align="TOP_LEFT" margin="false,false,false,true">
+                <label id="course" stylename="module-card-breadcrumb"/>
+                <label id="level" stylename="module-card-breadcrumb"/>
+                <label id="intake" stylename="module-card-breadcrumb"/>
             </hbox>
             <label id="description"
                    align="MIDDLE_CENTER"/>
