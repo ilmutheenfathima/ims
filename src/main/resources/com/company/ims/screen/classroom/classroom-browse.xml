@@ -18,8 +18,7 @@
             <loader id="classroomsDl">
                 <query>
                     <![CDATA[select e from Classroom e
-                    where e.batch = :batch
-                    and e.intakeModule = :intakeModule  ]]>
+                    where e.batch = :batch ]]>
                 </query>
             </loader>
         </collection>
