@@ -2,6 +2,7 @@
 <window xmlns="http://jmix.io/schema/ui/window"
         caption="msg://modulePage.caption">
     <layout expand="cardContainer">
+        <button align="TOP_RIGHT" visible="false" id="createBtn" primary="true" caption="msg://createBtn.caption"/>
 
         <scrollBox id="cardContainer"
                    width="100%" align="MIDDLE_CENTER" spacing="true">

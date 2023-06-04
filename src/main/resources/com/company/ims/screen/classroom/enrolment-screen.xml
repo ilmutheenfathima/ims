@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
         caption="msg://enrolmentScreen.caption"
         focusComponent="classroomsTable">
     <data readOnly="true">
@@ -51,6 +50,7 @@
                     width="100%"
                     dataContainer="classroomsDc">
             <actions>
+                <action id="excelExport" type="excelExport"/>
             </actions>
             <columns>
                 <column id="batch.intake.level.course"/>
@@ -66,6 +66,7 @@
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
+                <button id="exportBtn" action="classroomsTable.excelExport"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

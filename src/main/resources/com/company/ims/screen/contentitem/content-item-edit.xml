@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://contentItemEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="contentItemDc"
+                  class="com.company.ims.entity.ContentItem">
+            <fetchPlan extends="_base">
+                <property name="visibleClassrooms" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="visibleClassroomsDc" property="visibleClassrooms"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="AUTO"
+                width="AUTO"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="contentItemDc">
+            <column width="350px">
+                <textField id="titleField" property="title"/>
+                <textArea id="descriptionField" property="description" rows="5"/>
+            </column>
+        </form>
+        <groupBox id="visibleClassroomsBox" caption="msg://com.company.ims.entity/ContentItem.visibleClassrooms">
+            <table id="visibleClassroomsTable" dataContainer="visibleClassroomsDc" width="100%" height="100%">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="startDate"/>
+                    <column id="endDate"/>
+                    <column id="day"/>
+                    <column id="startTime"/>
+                    <column id="endTime"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="visibleClassroomsTable.add"/>
+                    <button action="visibleClassroomsTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

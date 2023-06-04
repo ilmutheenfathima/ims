@@ -49,6 +49,7 @@
                     width="100%"
                     dataContainer="enrolmentsDc">
             <actions>
+                <action id="excelExport" type="excelExport"/>
             </actions>
             <columns>
                 <column id="student.studentId"/>
@@ -58,6 +59,7 @@
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
+                <button id="exportBtn" action="enrolmentsTable.excelExport"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

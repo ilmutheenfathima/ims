@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <fragment xmlns="http://jmix.io/schema/ui/fragment">
-    <layout width="100%">
+    <layout width="100%" height="AUTO" spacing="true">
         <vbox stylename="well"
               height="AUTO"
               width="100%"
@@ -14,16 +14,8 @@
                         icon="font-icon:EDIT"
                         stylename="borderless-colored"/>
             </hbox>
-            <hbox spacing="false" align="TOP_LEFT" margin="false,false,false,true">
-                <label id="course" stylename="module-card-breadcrumb"/>
-                <label id="level" stylename="module-card-breadcrumb"/>
-                <label id="intake" stylename="module-card-breadcrumb"/>
-            </hbox>
             <label id="description"
                    align="MIDDLE_CENTER"/>
-            <button caption="View"
-                    primary="true"
-                    width="50%"/>
         </vbox>
     </layout>
 </fragment>

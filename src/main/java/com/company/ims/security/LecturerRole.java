@@ -1,6 +1,5 @@
 package com.company.ims.security;
 
-import com.google.errorprone.annotations.RestrictedApi;
 import io.jmix.security.model.EntityAttributePolicyAction;
 import io.jmix.security.model.EntityPolicyAction;
 import io.jmix.security.role.annotation.EntityAttributePolicy;
@@ -17,8 +16,18 @@ import javax.annotation.Nonnull;
 public interface LecturerRole extends UiMinimalRole {
     String CODE = "lecturer-role";
 
-    @MenuPolicy(menuIds = {"LecturerHomeScreen","CalendarScreen", "EnrolledModulesScreen"})
-    @ScreenPolicy(screenIds = {"LecturerHomeScreen", "ChangePasswordDialog", "User.edit", "Lecturer.edit", "themeSettingsScreen", "CalendarScreen","EnrolledModulesScreen"})
+    @MenuPolicy(menuIds = {"LecturerHomeScreen", "CalendarScreen", "EnrolledModulesScreen", "EnrolledModulesScreen", "ModulePage",})
+    @ScreenPolicy(screenIds = {
+            "LecturerHomeScreen",
+            "ChangePasswordDialog",
+            "User.edit",
+            "Lecturer.edit",
+            "themeSettingsScreen",
+            "CalendarScreen",
+            "EnrolledModulesScreen",
+            "EnrolledModulesScreen",
+            "ModulePage"
+    })
     @EntityPolicy(entityName = "*", actions = {EntityPolicyAction.ALL})
     @EntityAttributePolicy(entityName = "*", attributes = "*", action = EntityAttributePolicyAction.MODIFY)
     void screens();
