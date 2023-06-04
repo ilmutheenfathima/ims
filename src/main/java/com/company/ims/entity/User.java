@@ -1,6 +1,8 @@
 package com.company.ims.entity;
 
+import com.company.ims.security.CashierRole;
 import com.company.ims.security.FullAccessRole;
+import com.company.ims.security.LecturerRole;
 import com.company.ims.security.SecurityUtil;
 import io.jmix.core.HasTimeZone;
 import io.jmix.core.annotation.Secret;
@@ -191,5 +193,17 @@ public class User implements JmixUserDetails, HasTimeZone {
 
     public boolean isAdmin() {
         return SecurityUtil.hasAuthority(authorities, FullAccessRole.CODE);
+    }
+
+    public boolean isLecturer() {
+        return SecurityUtil.hasAuthority(authorities, LecturerRole.CODE);
+    }
+
+    public boolean isStudent() {
+        return SecurityUtil.hasAuthority(authorities, LecturerRole.CODE);
+    }
+
+    public boolean isCashier() {
+        return SecurityUtil.hasAuthority(authorities, CashierRole.CODE);
     }
 }

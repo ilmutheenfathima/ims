@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <layout width="100%">
+        <label id="title" stylename="h2"/>
+        <hbox spacing="false" align="TOP_LEFT">
+            <label id="course" stylename="module-card-breadcrumb"/>
+            <label id="level" stylename="module-card-breadcrumb"/>
+            <label id="intake" stylename="module-card-breadcrumb"/>
+        </hbox>
+        <label id="description"
+               align="MIDDLE_CENTER"/>
+    </layout>
+</fragment>

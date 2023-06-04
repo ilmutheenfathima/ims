@@ -1,5 +1,6 @@
 package com.company.ims.security;
 
+import com.google.errorprone.annotations.RestrictedApi;
 import io.jmix.security.model.EntityAttributePolicyAction;
 import io.jmix.security.model.EntityPolicyAction;
 import io.jmix.security.role.annotation.EntityAttributePolicy;

@@ -7,6 +7,7 @@
               caption="msg://com.company.ims.screen.course/courseBrowse.menu" icon="font-icon:BOOK"/>
         <item screen="Level_.browse" caption="msg://com.company.ims.screen.level/levelBrowse.menu"
               icon="font-icon:LIST"/>
+        <item screen="ModulePage" caption="msg://com.company.ims.screen.modulepage/modulePage.caption"/>
     </menu>
 
     <menu id="intakeMenu" caption="msg://com.company.ims/menu.intakes" icon="font-icon:OBJECT_GROUP"

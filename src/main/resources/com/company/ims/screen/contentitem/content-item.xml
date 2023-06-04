@@ -4,7 +4,7 @@
         <vbox stylename="well"
               height="AUTO"
               width="100%"
-              expand="classroomBtnPanel"
+              expand="description"
               spacing="true"
               align="MIDDLE_CENTER">
             <hbox stylename="v-panel-caption"
@@ -21,10 +21,9 @@
             </hbox>
             <label id="description"
                    align="MIDDLE_CENTER"/>
-            <vbox width="100%" id="classroomBtnPanel" spacing="true" align="MIDDLE_CENTER"/>
-            <button id="viewModuleContentBtn" caption="View"
+            <button caption="View"
                     primary="true"
-                    width="100%"/>
+                    width="50%"/>
         </vbox>
     </layout>
 </fragment>

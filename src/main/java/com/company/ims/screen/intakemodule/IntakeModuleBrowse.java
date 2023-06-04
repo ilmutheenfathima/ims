@@ -63,7 +63,7 @@ public class IntakeModuleBrowse extends StandardLookup<IntakeModule> {
         linkButton.setStyleName("huge");
         linkButton.setAlignment(Component.Alignment.MIDDLE_LEFT);
         linkButton.addClickListener(clickEvent -> {
-            ModuleContentEdit paymentBrowse = screenBuilders.editor(ModuleContent.class, this)
+            ModuleContentEdit moduleContentEdit = screenBuilders.editor(ModuleContent.class, this)
                     .withScreenClass(ModuleContentEdit.class)
                     .editEntity(intakeModule.getModuleContent())
                     .withOpenMode(OpenMode.DIALOG)
@@ -71,7 +71,7 @@ public class IntakeModuleBrowse extends StandardLookup<IntakeModule> {
                         intakeModulesDl.load();
                     })
                     .build();
-            paymentBrowse.show();
+            moduleContentEdit.show();
         });
         return linkButton;
     }
