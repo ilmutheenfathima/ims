@@ -2,6 +2,7 @@ package com.company.ims.screen.submission;
 
 import com.company.ims.entity.Submission;
 import com.company.ims.entity.User;
+import io.jmix.core.security.CurrentAuthentication;
 import io.jmix.ui.component.FileStorageUploadField;
 import io.jmix.ui.component.TextArea;
 import io.jmix.ui.component.TextField;
@@ -19,9 +20,16 @@ public class SubmissionEdit extends StandardEditor<Submission> {
     private FileStorageUploadField fileField;
     @Autowired
     private TextField<Float> marksField;
+    @Autowired
+    private CurrentAuthentication currentAuthentication;
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Subscribe
+    public void onInit(InitEvent event) {
+        user = (User) currentAuthentication.getUser();
     }
 
     @Subscribe
