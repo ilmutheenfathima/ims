@@ -47,7 +47,7 @@
                 <column id="description"/>
                 <column id="university"/>
             </columns>
-            <simplePagination/>
+            <simplePagination itemsPerPageDefaultValue="10"/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
                 <button id="createBtn" action="coursesTable.create"/>
