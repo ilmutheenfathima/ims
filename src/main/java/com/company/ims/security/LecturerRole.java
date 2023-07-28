@@ -29,7 +29,10 @@ public interface LecturerRole extends UiMinimalRole {
             "ModulePage",
             "ContentItem.edit",
             "Classroom.browse",
-            "ItemResource.edit"
+            "ItemResource.edit",
+            "Enrolment.browse",
+            "Submission.browse",
+            "Submission.edit"
     })
     @EntityPolicy(entityName = "*", actions = {EntityPolicyAction.ALL})
     @EntityAttributePolicy(entityName = "*", attributes = "*", action = EntityAttributePolicyAction.MODIFY)

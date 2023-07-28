@@ -49,8 +49,5 @@
         <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption"
               icon="font-icon:USER"/>
     </menu>
-    <item screen="Submission.browse" caption="Submission"
-          icon="font-icon:UPLOAD"/>
-
 
 </menu-config>

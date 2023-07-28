@@ -11,7 +11,8 @@
             </fetchPlan>
             <loader id="submissionsDl">
                 <query>
-                    <![CDATA[select e from Submission e]]>
+                    <![CDATA[select e from Submission e
+                    where e.contentItem = :contentItem]]>
                 </query>
             </loader>
         </collection>

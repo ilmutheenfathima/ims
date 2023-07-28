@@ -51,7 +51,7 @@ public class ModulePage extends Screen {
         renderPage();
     }
 
-    private void renderPage() {
+    public void renderPage() {
         cardContainer.removeAll();
         renderItems();
     }
@@ -78,6 +78,7 @@ public class ModulePage extends Screen {
         ContentItemFragment card = fragments.create(this, ContentItemFragment.class);
         card.setContentItem(contentItem);
         card.setUser(user);
+        card.setModulePage(this);
         return card;
     }
 

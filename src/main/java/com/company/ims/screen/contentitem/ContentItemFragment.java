@@ -4,13 +4,18 @@ import com.company.ims.entity.ContentItem;
 import com.company.ims.entity.Student;
 import com.company.ims.entity.Submission;
 import com.company.ims.entity.User;
+import com.company.ims.screen.modulepage.ModulePage;
+import com.company.ims.screen.submission.SubmissionBrowse;
 import com.company.ims.screen.submission.SubmissionEdit;
 import io.jmix.core.DataManager;
 import io.jmix.core.querycondition.LogicalCondition;
 import io.jmix.core.querycondition.PropertyCondition;
+import io.jmix.ui.Dialogs;
 import io.jmix.ui.ScreenBuilders;
 import io.jmix.ui.UiComponents;
 import io.jmix.ui.action.BaseAction;
+import io.jmix.ui.app.inputdialog.DialogActions;
+import io.jmix.ui.app.inputdialog.DialogOutcome;
 import io.jmix.ui.component.*;
 import io.jmix.ui.download.Downloader;
 import io.jmix.ui.icon.JmixIcon;
@@ -59,6 +64,14 @@ public class ContentItemFragment extends ScreenFragment {
     private Label<String> marksLabel;
     @Autowired
     private Button evaluationBtn;
+    @Autowired
+    private Dialogs dialogs;
+    @Autowired
+    private Button deleteBtn;
+
+    private ModulePage modulePage;
+
+
 
     public void setContentItem(ContentItem contentItem) {
         this.contentItem = contentItem;
@@ -69,6 +82,8 @@ public class ContentItemFragment extends ScreenFragment {
         if (user.isLecturer() || user.isAdmin()) {
             editBtn.setVisible(true);
             editBtn.setEnabled(true);
+            deleteBtn.setVisible(true);
+            deleteBtn.setEnabled(true);
         }
         renderComponent();
     }
@@ -205,6 +220,29 @@ public class ContentItemFragment extends ScreenFragment {
 
     @Subscribe("evaluationBtn")
     public void onEvaluationBtnClick(Button.ClickEvent event) {
-        //show evaluation screen
+        SubmissionBrowse submissionBrowse = screenBuilders.screen(this)
+                .withScreenClass(SubmissionBrowse.class)
+                .withOpenMode(OpenMode.DIALOG)
+                .build();
+        submissionBrowse.setContentItem(contentItem);
+        submissionBrowse.show();
+    }
+
+    @Subscribe("deleteBtn")
+    public void onDeleteBtnClick(Button.ClickEvent event) {
+        dialogs.createInputDialog(this)
+                .withCaption("Do you want to delete the item ?")
+                .withActions(DialogActions.YES_NO)
+                .withCloseListener(closeEvent -> {
+                    if (closeEvent.closedWith(DialogOutcome.YES)) {
+                        dataManager.remove(contentItem);
+                        modulePage.renderPage();
+                    }
+                })
+                .show();
+    }
+
+    public void setModulePage(ModulePage modulePage) {
+        this.modulePage = modulePage;
     }
 }
