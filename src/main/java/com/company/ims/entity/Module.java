@@ -33,6 +33,9 @@ public class Module {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Level level;
 
+    @Column(name = "CREDITS")
+    private Double credits;
+
     public String getCode() {
         return code;
     }
@@ -55,6 +58,14 @@ public class Module {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Double getCredits() {
+        return credits;
+    }
+
+    public void setCredits(Double credits) {
+        this.credits = credits;
     }
 
     public UUID getId() {

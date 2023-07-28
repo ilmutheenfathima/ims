@@ -44,6 +44,8 @@
             </actions>
             <columns>
                 <column id="name"/>
+                <column id="description"/>
+                <column id="university"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

@@ -30,6 +30,9 @@
         <form id="form" dataContainer="courseDc">
             <column width="350px">
                 <textField id="nameField" property="name"/>
+                <textField id="descriptionField" property="description" required="true"
+                           requiredMessage="msg://descriptionRequired"/>
+                <textField id="universityField" property="university"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

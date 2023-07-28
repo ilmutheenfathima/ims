@@ -6,6 +6,7 @@ import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,9 +19,17 @@ public class Course {
     @Id
     private UUID id;
 
+    @NotNull
     @InstanceName
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = false)
     private String name;
+
+    @NotNull
+    @Column(name = "DESCRIPTION", nullable = false)
+    private String description;
+
+    @Column(name = "UNIVERSITY")
+    private String university;
 
     @Composition
     @OneToMany(mappedBy = "course")
@@ -42,11 +51,27 @@ public class Course {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public UUID getId() {
         return id;
     }
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
     }
 }

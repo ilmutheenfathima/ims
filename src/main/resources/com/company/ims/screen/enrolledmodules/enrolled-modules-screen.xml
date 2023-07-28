@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
         caption="msg://enrolledModulesScreen.caption">
+    <data>
+        <collection id="intakesDc" class="com.company.ims.entity.Intake">
+            <fetchPlan extends="_base"/>
+            <loader id="intakesDl">
+                <query>
+                    <![CDATA[select e from Intake e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
     <layout expand="cardContainer">
+        <hbox spacing="true" margin="false,false,true,false">
+            <entityComboBox id="intakeField" inputPrompt="msg://intakeFieldCaption" optionsContainer="intakesDc"
+                            required="false"
+                            nullOptionVisible="true" nullName="msg://allAvailableModules"/>
+            <button id="searchButton" caption="Search"> </button>
+        </hbox>
         <scrollBox id="cardContainer"
                    width="100%" align="MIDDLE_CENTER" spacing="true">
         </scrollBox>

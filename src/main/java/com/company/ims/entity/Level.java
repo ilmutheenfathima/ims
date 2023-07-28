@@ -79,6 +79,6 @@ public class Level {
 
     @InstanceName
     public String getLevelLongName() {
-        return course.getName() + " " + name;
+        return course.getName() + " - " + name;
     }
 }

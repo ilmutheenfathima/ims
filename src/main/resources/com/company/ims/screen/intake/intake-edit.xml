@@ -12,11 +12,21 @@
             </fetchPlan>
             <loader/>
         </instance>
+
+        <collection id="coursesDc" class="com.company.ims.entity.Course">
+            <fetchPlan extends="_base"/>
+            <loader id="coursesDl">
+                <query>
+                    <![CDATA[select e from Course e]]>
+                </query>
+            </loader>
+        </collection>
         <collection id="levelsDc" class="com.company.ims.entity.Level">
             <fetchPlan extends="_base"/>
             <loader id="levelsDl">
                 <query>
-                    <![CDATA[select e from Level_ e]]>
+                    <![CDATA[select e from Level_ e
+                    where e.course = :course  ]]>
                 </query>
             </loader>
         </collection>
@@ -41,10 +51,14 @@
     <layout spacing="true" expand="editActions">
         <form id="form" dataContainer="intakeDc">
             <column width="350px">
-                <textField id="nameField" property="name"/>
-                <dateField id="startDateField" property="startDate"/>
+
+                <entityComboBox id="courseField" caption="msg://courseFieldCaption" optionsContainer="coursesDc"
+                                required="true"
+                                nullOptionVisible="false"/>
                 <entityComboBox id="levelField" property="level" optionsContainer="levelsDc" required="true"
                                 nullOptionVisible="false"/>
+                <textField id="nameField" property="name"/>
+                <dateField id="startDateField" property="startDate"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

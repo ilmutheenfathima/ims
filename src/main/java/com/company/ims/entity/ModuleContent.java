@@ -11,9 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "MODULE_CONTENT", indexes = {
-        @Index(name = "IDX_MODULECONTENT_INTAKEMODULE", columnList = "")
-})
+@Table(name = "MODULE_CONTENT")
 @Entity
 public class ModuleContent {
     @JmixGeneratedValue

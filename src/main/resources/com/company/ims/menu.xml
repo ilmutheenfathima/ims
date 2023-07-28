@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
 
-    <menu id="courseMenu" caption="msg://com.company.ims/menu.courses" icon="font-icon:BOOK"
+    <menu id="masterDataMenu" caption="Master Data" icon="font-icon:ADDRESS_BOOK"
           insertBefore="administration">
-        <item screen="Course.browse"
-              caption="msg://com.company.ims.screen.course/courseBrowse.menu" icon="font-icon:BOOK"/>
-        <item screen="Level_.browse" caption="msg://com.company.ims.screen.level/levelBrowse.menu"
-              icon="font-icon:LIST"/>
-        <item screen="Submission.browse" caption="msg://com.company.ims.screen.submission/submissionBrowse.menu" icon="font-icon:LIST"/>
-    </menu>
-
-    <menu id="intakeMenu" caption="msg://com.company.ims/menu.intakes" icon="font-icon:OBJECT_GROUP"
-          insertBefore="administration">
+        <menu id="curriculumMenu" caption="Curriculum" icon="font-icon:COLUMNS"
+              insertBefore="administration">
+            <item screen="Course.browse"
+                  caption="msg://com.company.ims.screen.course/courseBrowse.menu" icon="font-icon:BOOK"/>
+            <item screen="Level_.browse" caption="msg://com.company.ims.screen.level/levelBrowse.menu"
+                  icon="font-icon:LIST"/>
+        </menu>
         <item screen="Intake.browse" caption="msg://com.company.ims.screen.intake/intakeBrowse.menu"
               icon="font-icon:OBJECT_GROUP"/>
         <item screen="Batch.browse" caption="msg://com.company.ims.screen.batch/batchBrowse.menu"
               icon="font-icon:ALIGN_RIGHT"/>
+    </menu>
+
+    <menu id="intakeMenu" caption="msg://com.company.ims/menu.intakes" icon="font-icon:OBJECT_GROUP"
+          insertBefore="administration">
+
     </menu>
     <item screen="Student.browse"
           caption="msg://com.company.ims.screen.student/studentBrowse.menu" icon="font-icon:PENCIL"/>
@@ -46,5 +49,8 @@
         <item screen="User.browse" caption="msg://com.company.ims.screen.user/UserBrowse.caption"
               icon="font-icon:USER"/>
     </menu>
+    <item screen="Submission.browse" caption="Submission"
+          icon="font-icon:UPLOAD"/>
+
 
 </menu-config>

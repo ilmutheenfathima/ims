@@ -4,6 +4,7 @@ import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import io.jmix.core.metamodel.annotation.JmixProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -13,7 +14,8 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "INTAKE", indexes = {
-        @Index(name = "IDX_INTAKE_LEVEL", columnList = "LEVEL_ID")
+        @Index(name = "IDX_INTAKE_LEVEL", columnList = "LEVEL_ID"),
+        @Index(name = "IDX_INTAKE_", columnList = "")
 })
 @Entity
 public class Intake {
@@ -87,5 +89,8 @@ public class Intake {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+    public String getIntakeLongName() {
+        return level.getLevelLongName() + " - " + name;
     }
 }

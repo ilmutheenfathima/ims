@@ -52,6 +52,7 @@
             <columns>
                 <column id="code"/>
                 <column id="name"/>
+                <column id="credits"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
