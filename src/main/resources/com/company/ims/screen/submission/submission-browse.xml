@@ -49,8 +49,8 @@
             <columns>
                 <column id="text"/>
                 <column id="file"/>
-                <column id="marks"/>
                 <column id="student"/>
+                <column id="marks"/>
                 <column id="contentItem"/>
             </columns>
             <simplePagination/>

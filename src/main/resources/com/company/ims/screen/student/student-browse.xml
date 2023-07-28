@@ -49,6 +49,7 @@
                     </properties>
                 </action>
                 <action id="remove" type="remove"/>
+                    <action id="excelExport" type="excelExport"/>
             </actions>
             <columns>
                 <column id="username"/>
@@ -59,12 +60,13 @@
                 <column id="studentId"/>
                 <column id="address"/>
             </columns>
-            <simplePagination/>
+            <simplePagination itemsPerPageDefaultValue="10"/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
                 <button id="createBtn" action="studentsTable.create"/>
                 <button id="editBtn" action="studentsTable.edit"/>
                 <button id="removeBtn" action="studentsTable.remove"/>
+                <button id="exportBtn" action="studentsTable.excelExport"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
