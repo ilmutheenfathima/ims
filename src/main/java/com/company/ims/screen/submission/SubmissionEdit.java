@@ -40,8 +40,10 @@ public class SubmissionEdit extends StandardEditor<Submission> {
         } else if (user.isLecturer()) {
             marksField.setVisible(true);
             marksField.setEnabled(true);
-            textField.setEnabled(false);
-            fileField.setEnabled(false);
+            textField.setEnabled(true);
+            fileField.setEnabled(true);
+            textField.setEditable(false);
+            fileField.setEditable(false);
         }
     }
 
