@@ -1,14 +1,19 @@
 package com.company.ims.screen.lecturer;
 
+import com.company.ims.entity.IntakeModule;
 import com.company.ims.entity.Lecturer;
+import com.company.ims.entity.Module;
 import com.company.ims.entity.User;
 import com.company.ims.security.DatabaseUserRepository;
 import com.company.ims.security.LecturerRole;
 import io.jmix.core.EntityStates;
 import io.jmix.core.security.event.SingleUserPasswordChangeEvent;
 import io.jmix.ui.Notifications;
+import io.jmix.ui.component.EntityComboBox;
+import io.jmix.ui.component.HasValue;
 import io.jmix.ui.component.PasswordField;
 import io.jmix.ui.component.TextField;
+import io.jmix.ui.model.CollectionLoader;
 import io.jmix.ui.model.DataContext;
 import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +50,11 @@ public class LecturerEdit extends StandardEditor<Lecturer> {
     private MessageBundle messageBundle;
 
     private boolean isNewEntity;
+    @Autowired
+    private EntityComboBox<Module> moduleField;
+
+    @Autowired
+    private CollectionLoader<Lecturer> modulesDl;
 
     @Subscribe
     public void onInitEntity(InitEntityEvent<User> event) {
@@ -81,6 +91,17 @@ public class LecturerEdit extends StandardEditor<Lecturer> {
         if (isNewEntity) {
             userRepository.addResourceRoleToUser(getEditedEntity(), LecturerRole.CODE); // set lecturer role
             getApplicationContext().publishEvent(new SingleUserPasswordChangeEvent(getEditedEntity().getUsername(), passwordField.getValue()));
+        }
+    }
+
+    public void onIntakeModuleFieldValueChange(HasValue.ValueChangeEvent<IntakeModule> event) {
+        moduleField.setValue(null);
+        if (event.getValue() != null) {
+            moduleField.setEditable(true);
+            modulesDl.setParameter("module", event.getValue().getModule());
+            modulesDl.load();
+        } else {
+            moduleField.setEditable(false);
         }
     }
 }
