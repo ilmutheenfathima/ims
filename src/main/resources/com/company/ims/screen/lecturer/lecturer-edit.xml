@@ -5,9 +5,20 @@
     <data>
         <instance id="lecturerDc"
                   class="com.company.ims.entity.Lecturer">
-            <fetchPlan extends="_base"/>
+            <fetchPlan extends="_base">
+                <property name="module" fetchPlan="_base"/>
+            </fetchPlan>
             <loader/>
         </instance>
+        <collection id="modulesDc" class="com.company.ims.entity.Module">
+            <fetchPlan extends="_base"/>
+            <loader id="modulesDl">
+                <query>
+                    <![CDATA[select e from Module_ e]]>
+                </query>
+            </loader>
+        </collection>
+
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -44,6 +55,8 @@
                 <checkBox id="activeField" property="active"/>
                 <textField id="lecturerIdField" property="lecturerId"/>
                 <textField id="addressField" property="address"/>
+                <entityComboBox id="moduleField" property="module" optionsContainer="modulesDc" required="true"
+                                nullOptionVisible="false"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

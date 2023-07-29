@@ -25,9 +25,14 @@ public class ModuleBrowse extends StandardLookup<Module> {
 
     @Subscribe
     public void onAfterShow(AfterShowEvent event) {
-        getWindow().setCaption("Modules of " + level.getLevelLongName());
-        modulesDl.setParameter("level", level);
-        modulesDl.load();
+        if (level != null) {
+            getWindow().setCaption("Modules of " + level.getLevelLongName());
+            modulesDl.setParameter("level", level);
+            modulesDl.load();
+        }else {
+            modulesDl.setQuery("select e from Module_ e");
+            modulesDl.load();
+        }
     }
 
     @Install(to = "modulesTable.create", subject = "newEntitySupplier")

@@ -2,9 +2,7 @@ package com.company.ims.entity;
 
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @JmixEntity
@@ -17,8 +15,20 @@ public class Lecturer extends User {
     @Column(name = "ADDRESS")
     private String address;
 
+    @JoinColumn(name = "MODULE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Module module;
+
     @OneToMany(mappedBy = "lecturer")
     private List<Classroom> classrooms;
+
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
+    }
 
     public List<Classroom> getClassrooms() {
         return classrooms;

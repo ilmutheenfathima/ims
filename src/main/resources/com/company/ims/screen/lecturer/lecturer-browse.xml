@@ -5,7 +5,9 @@
     <data readOnly="true">
         <collection id="lecturersDc"
                     class="com.company.ims.entity.Lecturer">
-            <fetchPlan extends="_base"/>
+            <fetchPlan extends="_base">
+                <property name="module" fetchPlan="_base"/>
+            </fetchPlan>
             <loader id="lecturersDl">
                 <query>
                     <![CDATA[select e from Lecturer e]]>
@@ -50,6 +52,7 @@
                 <column id="active"/>
                 <column id="lecturerId"/>
                 <column id="address"/>
+                <column id="module"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

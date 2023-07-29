@@ -29,6 +29,14 @@
                 </query>
             </loader>
         </collection>
+        <collection id="lecturersDc" class="com.company.ims.entity.Lecturer">
+            <fetchPlan extends="_base"/>
+            <loader id="lecturersDl">
+                <query>
+                    <![CDATA[select e from Lecturer e where e.module = :module]]>
+                </query>
+            </loader>
+        </collection>
 
     </data>
     <facets>
@@ -57,14 +65,17 @@
                 <comboBox id="dayField" property="day"/>
                 <timeField id="startTimeField" property="startTime"/>
                 <timeField id="endTimeField" property="endTime"/>
-                <entityPicker id="lecturerField" property="lecturer">
-                    <actions>
-                        <action id="entityLookup" type="entity_lookup"/>
-                        <action id="entityClear" type="entity_clear"/>
-                    </actions>
-                </entityPicker>
                 <entityComboBox id="intakeModuleField" property="intakeModule" optionsContainer="intakeModulesDc"
                                 required="true" nullOptionVisible="false"/>
+                <entityComboBox editable="false" id="lecturerField" property="lecturer" optionsContainer="lecturersDc"
+                                required="true" nullOptionVisible="false"/>
+<!--                <entityPicker id="lecturerField" property="lecturer">-->
+<!--                    <actions>-->
+<!--                        <action id="entityLookup" type="entity_lookup"/>-->
+<!--                        <action id="entityClear" type="entity_clear"/>-->
+<!--                    </actions>-->
+<!--                </entityPicker>-->
+
             </column>
         </form>
         <hbox id="editActions" spacing="true">
