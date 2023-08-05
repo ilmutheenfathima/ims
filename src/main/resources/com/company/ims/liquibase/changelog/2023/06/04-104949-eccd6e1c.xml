@@ -78,6 +78,10 @@
                 <constraints nullable="false"/>
             </column>
             <column name="CLASSROOM_ID" type="UUID"/>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
         </createTable>
     </changeSet>
     <changeSet id="7" author="ims">
@@ -103,6 +107,7 @@
             <column name="MODULE_ID" type="UUID">
                 <constraints nullable="false"/>
             </column>
+            <column name="MODULE_CONTENT_ID" type="UUID"/>
         </createTable>
     </changeSet>
     <changeSet id="9" author="ims">
@@ -121,7 +126,12 @@
             <column name="ID" type="UUID">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MODULE_"/>
             </column>
-            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="CODE" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
             <column name="LEVEL_ID" type="UUID">
                 <constraints nullable="false"/>
             </column>
@@ -134,9 +144,6 @@
             </column>
             <column name="TITLE" type="VARCHAR(255)"/>
             <column name="DESCRIPTION" type="CLOB"/>
-            <column name="INTAKE_MODULE_ID" type="UUID">
-                <constraints nullable="false"/>
-            </column>
             <column name="MODULE_FEE" type="DOUBLE"/>
             <column name="PAYMENT_OPTIONS" type="CLOB"/>
         </createTable>
@@ -264,15 +271,6 @@
                                  referencedColumnNames="ID" referencedTableName="COURSE"/>
     </changeSet>
     <changeSet id="25" author="ims">
-        <createIndex indexName="IDX_MODULECONTENT_INTAKEMODULE" tableName="MODULE_CONTENT">
-            <column name="INTAKE_MODULE_ID"/>
-        </createIndex>
-
-        <addForeignKeyConstraint baseColumnNames="INTAKE_MODULE_ID" baseTableName="MODULE_CONTENT"
-                                 constraintName="FK_MODULECONTE_ON_INTAKEMODUL" referencedColumnNames="ID"
-                                 referencedTableName="INTAKE_MODULE"/>
-    </changeSet>
-    <changeSet id="26" author="ims">
         <createIndex indexName="IDX_MODULE__LEVEL" tableName="MODULE_">
             <column name="LEVEL_ID"/>
         </createIndex>
@@ -280,7 +278,7 @@
         <addForeignKeyConstraint baseColumnNames="LEVEL_ID" baseTableName="MODULE_" constraintName="FK_MODULE__ON_LEVEL"
                                  referencedColumnNames="ID" referencedTableName="LEVEL_"/>
     </changeSet>
-    <changeSet id="27" author="ims">
+    <changeSet id="26" author="ims">
         <createIndex indexName="IDX_PAYMENT_HISTORY_ENROLMENT" tableName="PAYMENT_HISTORY">
             <column name="ENROLMENT_ID"/>
         </createIndex>
@@ -289,14 +287,33 @@
                                  constraintName="FK_PAYMENTHISTORY_ON_ENROLMENT" referencedColumnNames="ID"
                                  referencedTableName="ENROLMENT"/>
     </changeSet>
-    <changeSet id="28" author="ims">
+    <changeSet id="27" author="ims">
         <addForeignKeyConstraint baseColumnNames="CLASSROOM_ID" baseTableName="CONTENT_ITEM_CLASSROOM_LINK"
                                  constraintName="FK_CONITECLA_ON_CLASSROOM" referencedColumnNames="ID"
                                  referencedTableName="CLASSROOM"/>
     </changeSet>
-    <changeSet id="29" author="ims">
+    <changeSet id="28" author="ims">
         <addForeignKeyConstraint baseColumnNames="CONTENT_ITEM_ID" baseTableName="CONTENT_ITEM_CLASSROOM_LINK"
                                  constraintName="FK_CONITECLA_ON_CONTENT_ITEM" referencedColumnNames="ID"
                                  referencedTableName="CONTENT_ITEM"/>
+    </changeSet>
+    <changeSet id="29" author="ims">
+        <addForeignKeyConstraint baseColumnNames="MODULE_CONTENT_ID" baseTableName="INTAKE_MODULE"
+                                 constraintName="FK_INTAKEMODUL_ON_MODULECONTE" referencedColumnNames="ID"
+                                 referencedTableName="MODULE_CONTENT"/>
+    </changeSet>
+    <changeSet id="30" author="ims">
+        <modifyDataType columnName="DTYPE" newDataType="VARCHAR(255)" tableName="USER_"/>
+    </changeSet>
+    <changeSet id="31" author="ims">
+        <dropColumn columnName="LECTURER_ID" tableName="USER_"/>
+
+        <dropColumn columnName="STUDENT_ID" tableName="USER_"/>
+    </changeSet>
+    <changeSet id="32" author="ims">
+        <addColumn tableName="USER_">
+            <column name="LECTURER_ID" type="VARCHAR(255)"/>
+            <column name="STUDENT_ID" type="VARCHAR(255)"/>
+        </addColumn>
     </changeSet>
 </databaseChangeLog>

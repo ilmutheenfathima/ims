@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="ims">
+        <addColumn tableName="USER_">
+            <column name="MODULE_ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="ims">
+        <createIndex indexName="IDX_USER__MODULE" tableName="USER_">
+            <column name="MODULE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="MODULE_ID" baseTableName="USER_" constraintName="FK_USER__ON_MODULE"
+                                 referencedColumnNames="ID" referencedTableName="MODULE_"/>
+    </changeSet>
+</databaseChangeLog>

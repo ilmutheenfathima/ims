@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
     <changeSet id="1" author="ims">
-        <addColumn tableName="MODULE_">
-            <column name="CODE" type="VARCHAR(255)"/>
-        </addColumn>
-
-        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="CODE" defaultNullValue="''"
-                              tableName="MODULE_"/>
+        <dropForeignKeyConstraint baseTableName="LEVEL_" constraintName="FK_LEVEL__ON_COURSE"/>
     </changeSet>
     <changeSet id="2" author="ims">
-        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="NAME" tableName="MODULE_" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="COURSE_ID" baseTableName="LEVEL_" constraintName="FK_LEVEL__ON_COURSE"
+                                 referencedColumnNames="ID" referencedTableName="COURSE"/>
     </changeSet>
 </databaseChangeLog>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="ims">
+        <dropForeignKeyConstraint baseTableName="LEVEL_" constraintName="FK_LEVEL__ON_COURSE"/>
+    </changeSet>
+    <changeSet id="2" author="ims">
+        <addForeignKeyConstraint baseColumnNames="COURSE_ID" baseTableName="LEVEL_" constraintName="FK_LEVEL__ON_COURSE"
+                                 referencedColumnNames="ID" referencedTableName="COURSE"/>
+    </changeSet>
+    <changeSet id="3" author="ims">
+        <dropForeignKeyConstraint baseTableName="MODULE_" constraintName="FK_MODULE__ON_LEVEL"/>
+    </changeSet>
+    <changeSet id="4" author="ims">
+        <addForeignKeyConstraint baseColumnNames="LEVEL_ID" baseTableName="MODULE_" constraintName="FK_MODULE__ON_LEVEL"
+                                 referencedColumnNames="ID" referencedTableName="LEVEL_"/>
+    </changeSet>
+</databaseChangeLog>
