@@ -14,6 +14,14 @@
                 </query>
             </loader>
         </collection>
+        <collection id="modulesDc" class="com.company.ims.entity.Module">
+            <fetchPlan extends="_base"/>
+            <loader id="modulesDl">
+                <query>
+                    <![CDATA[select e from Module_ e]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -36,6 +44,12 @@
                 dataLoader="lecturersDl">
             <properties include=".*"/>
         </filter>
+        <hbox spacing="true" margin="false,false,true,false">
+            <entityComboBox id="moduleField" inputPrompt="msg://moduleFieldCaption" optionsContainer="modulesDc"
+                            required="false"
+                            nullOptionVisible="true"/>
+            <button id="searchButton" caption="Search"> </button>
+        </hbox>
         <groupTable id="lecturersTable"
                     width="100%"
                     dataContainer="lecturersDc">
